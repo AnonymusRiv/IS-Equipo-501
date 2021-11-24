@@ -83,6 +83,7 @@ bool modificarReserva(int res_ID){
             file >> resID;
             if(res_ID==resID){
                 modificarRecursos();
+                
                 TODO //Hacer getline para leer la reserva que se quiere modificar y poder crear una nueva con las modificaciones insertadas
             }
     }
