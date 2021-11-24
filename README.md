@@ -1,1 +1,2 @@
 # Equipo-501
+Cada uno subirá su parte en la rama en específico de cada uno para posteriormente exponerlo con los demás y si hay algún fallo corregirlo, o en caso de que todo vaya bien, implementarlo en el programa principal
