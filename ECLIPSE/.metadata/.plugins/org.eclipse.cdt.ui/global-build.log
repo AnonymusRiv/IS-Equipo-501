@@ -1,0 +1,40 @@
+Info: Nothing to build for Usuario_Normal
+Info: Nothing to build for Usuario_Administrador
+Info: Nothing to build for Usuario_Normal
+13:30:06 **** Rebuild of configuration Debug Gcov for project Pruebas ****
+Info: Internal Builder is used for build
+g++ -std=c++1z "-IC:\\Users\\franm\\Desktop\\UNIVERSIDAD\\Segundo\\IngenieriaSoftware\\implementacion_IS\\ECLIPSE\\Pruebas\\cute" "-IC:\\Users\\franm\\Desktop\\UNIVERSIDAD\\Segundo\\IngenieriaSoftware\\implementacion_IS\\ECLIPSE\\Pruebas\\boost" -O0 -g3 -ftest-coverage -fprofile-arcs -Wall -c -fmessage-length=0 -Wno-attributes -o PRUEBACOMPILAR.o "..\\PRUEBACOMPILAR.cc" 
+..\PRUEBACOMPILAR.cc:1:23: fatal error:  iostream : No such file or directory
+ # include < iostream >
+                       ^
+compilation terminated.
+Info: Nothing to build for Usuario_Administrador
+Info: Nothing to build for Usuario_Normal
+13:30:13 **** Incremental Build of configuration Debug Gcov for project Pruebas ****
+Info: Internal Builder is used for build
+g++ -std=c++1z "-IC:\\Users\\franm\\Desktop\\UNIVERSIDAD\\Segundo\\IngenieriaSoftware\\implementacion_IS\\ECLIPSE\\Pruebas\\cute" "-IC:\\Users\\franm\\Desktop\\UNIVERSIDAD\\Segundo\\IngenieriaSoftware\\implementacion_IS\\ECLIPSE\\Pruebas\\boost" -O0 -g3 -ftest-coverage -fprofile-arcs -Wall -c -fmessage-length=0 -Wno-attributes -o PRUEBACOMPILAR.o "..\\PRUEBACOMPILAR.cc" 
+..\PRUEBACOMPILAR.cc:1:23: fatal error:  iostream : No such file or directory
+ # include < iostream >
+                       ^
+compilation terminated.
+Info: Nothing to build for Usuario_Administrador
+Info: Nothing to build for Usuario_Normal
+13:31:19 **** Incremental Build of configuration Debug Gcov for project Pruebas ****
+Info: Internal Builder is used for build
+g++ -std=c++1z "-IC:\\Users\\franm\\Desktop\\UNIVERSIDAD\\Segundo\\IngenieriaSoftware\\implementacion_IS\\ECLIPSE\\Pruebas\\cute" "-IC:\\Users\\franm\\Desktop\\UNIVERSIDAD\\Segundo\\IngenieriaSoftware\\implementacion_IS\\ECLIPSE\\Pruebas\\boost" -O0 -g3 -ftest-coverage -fprofile-arcs -Wall -c -fmessage-length=0 -Wno-attributes -o "src\\Test.o" "..\\src\\Test.cpp" 
+g++ -fprofile-arcs -ftest-coverage -std=c99 -ftest-coverage -fprofile-arcs -o Pruebas.exe "src\\Test.o" 
+13:31:27 **** Incremental Build of configuration Debug for project Usuario_Administrador ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -Wno-attributes -o PRUEBACOMPILAR.o "..\\PRUEBACOMPILAR.cc" 
+..\PRUEBACOMPILAR.cc:1:23: fatal error:  iostream : No such file or directory
+ # include < iostream >
+                       ^
+compilation terminated.
+Info: Nothing to build for Usuario_Normal
+Info: Nothing to build for Pruebas
+13:31:53 **** Incremental Build of configuration Debug for project Usuario_Administrador ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -Wno-attributes -o PRUEBACOMPILAR.o "..\\PRUEBACOMPILAR.cc" 
+g++ -o Usuario_Administrador.exe PRUEBACOMPILAR.o 
+Info: Nothing to build for Usuario_Normal
+Info: Nothing to build for Usuario_Administrador
