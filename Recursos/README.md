@@ -1,0 +1,1 @@
+En esta carpeta tendremos todas las cosas en conjunto para utilizarlo con eclipse
