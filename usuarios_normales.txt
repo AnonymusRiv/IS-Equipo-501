@@ -1,1 +1,9 @@
 //UN_ID UN_Password UN_Name UN_Mail UN_Nucleus UN_Time
+/*
+int UN_ID = numero de 8 caracteres
+string UN_Password = cadena de como mínimo 4 caracteres
+string UN_Name = cadena sin minimo de caracteres ni maximo (solo poner nombre, sin apellidos)
+string UN_Mail = cadena sin minimo de caracteres + @ + tipo_correo +.com
+int UN_Nucleus = numero de 2 caracteres
+int UN_Time = numero de 2 caracteres (numero de días)
+*/
