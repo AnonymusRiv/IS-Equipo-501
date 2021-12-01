@@ -22,18 +22,18 @@ class Maquina
 {
 
 	private:
-		int M_ID;
-		int M_Nucleus;
-		int M_NOcuped;
+		int M_ID_;
+		int M_Nucleus_;
+		int M_NOcuped_;
 
 	public:
 		Maquina(int machine_ID, int machine_Nucleus, int machine_NOcuped = 0);
 
-		int getID();
-		int getNucleus();
+		inline int getID(){return M_ID_;};
+		inline int getNucleus(){return M_Nucleus_;};
 		bool setNucleus(int machine_Nucleus);
 
-		int getNOcuped();
+		inline int getNOcuped(){return M_NOcuped_;};
 		bool setNOcuped(int machine_NOcuped, int OTime);
 
 		bool setDate(date machine_Date);
