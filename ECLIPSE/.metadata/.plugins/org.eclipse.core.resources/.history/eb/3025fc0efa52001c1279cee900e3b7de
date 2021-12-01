@@ -1,0 +1,12 @@
+#include "string"
+
+UsuarioNormal();
+int getId();
+string getPassword();
+bool setPassword();
+string getName();
+bool setName();
+string getMail();
+bool setMail();
+int getNucleus();
+int getTime();

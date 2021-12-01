@@ -1,13 +1,13 @@
-#include "string"
+#include <string>
 using namespace std;
 
 class Usuario_administrador{
-	public:
+	private:
 		int UA_ID_;
 		string UA_Password_;
 		string UA_Name_;
 		string UA_Mail_;
-	private:
+	public:
 		int getId();
 		string getPassword();
 		bool setPassword();
@@ -16,9 +16,9 @@ class Usuario_administrador{
 		string getMail();
 		bool setMail();
 };
-class Usuario_administrador_de_usuarios{
-	public:
-		int UA_Type_;
+class Usuario_administrador_de_usuarios : public Usuario_administrador{
 	private:
-		bool UAdministradorUsuarios();
+		int UA_Type_;
+	public:
+		UAdministradorUsuarios();
 };
