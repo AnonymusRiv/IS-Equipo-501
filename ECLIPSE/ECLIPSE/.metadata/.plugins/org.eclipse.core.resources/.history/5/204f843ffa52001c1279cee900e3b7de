@@ -1,0 +1,14 @@
+#include "string"
+
+Usuario_normal::UsuarioNormal(int id, string name, string password, string mail, int nucleus, int time){
+
+}
+int getId();
+string getPassword();
+bool setPassword();
+string getName();
+bool setName();
+string getMail();
+bool setMail();
+int getNucleus();
+int getTime();

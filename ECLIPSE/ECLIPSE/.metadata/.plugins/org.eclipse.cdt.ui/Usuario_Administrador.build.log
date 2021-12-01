@@ -1,0 +1,8 @@
+00:09:10 **** Incremental Build of configuration Debug for project Usuario_Administrador ****
+Info: Internal Builder is used for build
+g++ -o Usuario_Administrador.exe Usuario_Administrador.o 
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../libmingw32.a(main.o):(.text.startup+0xa0): undefined reference to `WinMain@16'
+collect2.exe: error: ld returned 1 exit status
+
+00:09:11 Build Finished. 0 errors, 0 warnings. (took 663ms)
+
