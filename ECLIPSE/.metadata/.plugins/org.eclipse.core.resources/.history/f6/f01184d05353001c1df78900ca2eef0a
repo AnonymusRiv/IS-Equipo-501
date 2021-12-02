@@ -20,5 +20,5 @@ class Usuario_administrador_de_usuarios : public Usuario_administrador{
 	private:
 		int UA_Type_;
 	public:
-		UAdministradorUsuarios(int id, string password, string name, string mail, int type=1);
+		UAdministradorUsuarios();
 };

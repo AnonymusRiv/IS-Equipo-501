@@ -12,24 +12,8 @@ Usuario_Normal::Usuario_Normal(int id, string name, string password, string mail
 	UN_Nucleus_=nucleus;
 	UN_Time=time;
 }
-bool Usuario_Normal::setPassword(string password){
-	if(password==""){
-		return false;
-	}
+bool setPassword(string password){
 	UN_Password_=password;
-	return true;
 }
-bool Usuario_Normal::setName(string name){
-	if(name==""){
-		return false;
-	}
-	UN_Name_=name;
-	return true;
-}
-bool Usuario_Normal::setMail(string mail){
-	if(mail==""){
-		return false;
-	}
-	UN_Mail_=mail;
-	return true;
-}
+inline bool setName(string name){UN_Name_=name; };
+inline bool setMail(string mail){UN_Mail_=mail; };
