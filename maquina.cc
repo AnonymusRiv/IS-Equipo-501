@@ -13,10 +13,11 @@ bool setNucleus(int machine_Nucleus)
 {
 	if(machine_Nucleus.empty())
 	{
-		return false;
+		M_Nucleus_ = machine_Nucleus;
+		return true;
 	}
-	M_Nucleus_ = machine_Nucleus;
-	return true;
+		return false;
+	
 }
 
 bool setNOcuped(int machine_NOcuped, int OTime)
