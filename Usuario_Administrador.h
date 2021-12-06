@@ -1,3 +1,6 @@
+#ifndef Usuario_Administrador_h
+#define Usuario_Administrador_h
+
 #include <string>
 using namespace std;
 
@@ -29,3 +32,5 @@ class Usuario_administrador_de_maquinas : public Usuario_administrador{
 	public:
 		Usuario_administrador_de_maquinas(int id, string password, string name, string mail);
 };
+
+#endif
