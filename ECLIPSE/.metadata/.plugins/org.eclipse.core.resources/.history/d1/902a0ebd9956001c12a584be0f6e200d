@@ -11,7 +11,7 @@ class Usuario_Normal{
 		string UN_Password_;
 		string UN_Mail_;
 		int UN_Nucleus_;
-		int UN_Time_;
+		int UN_Time;
 
 		bool setID(int id);
 		bool setName(string name);
@@ -25,7 +25,7 @@ class Usuario_Normal{
 		inline string getName(){return UN_Name_; };
 		inline string getMail(){return UN_Mail_; };
 		inline int getNucleus(){return UN_Nucleus_; };
-		inline int getTime(){return UN_Time_; };
+		inline int getTime(){return UN_Time; };
 		bool setPassword(string password);
 		bool setMail(string mail);
 };
