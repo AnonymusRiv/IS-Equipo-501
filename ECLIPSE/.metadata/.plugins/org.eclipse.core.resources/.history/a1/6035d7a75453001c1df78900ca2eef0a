@@ -1,6 +1,0 @@
-#include "Usuario_Administrador.h"
-#include <string>
-
-UAdministradorUsuarios(int id, string password, string name, string mail){
-
-}
