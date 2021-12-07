@@ -1,8 +1,0 @@
-//UA_ID UA_Password UA_Name UA_Mail UA_Type
-/*
-int UA_ID = numero de 8 caracteres
-string UA_Password = cadena de como mínimo 4 caracteres
-string UA_Name = cadena sin minimo de caracteres ni maximo (solo poner nombre, sin apellidos)
-string UA_Mail = cadena sin minimo de caracteres + @ + tipo_correo +.com
-int UA_Type = numero de 1 caracter (UA_Type=1)
-*/
