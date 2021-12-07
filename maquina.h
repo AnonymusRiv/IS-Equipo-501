@@ -31,15 +31,20 @@ class Maquina
 
 		inline int getID(){return M_ID_;};
 		inline int getNucleus(){return M_Nucleus_;};
-		bool setNucleus(int machine_Nucleus);
-
 		inline int getNOcuped(){return M_NOcuped_;};
-		bool setNOcuped(int machine_NOcuped, int OTime);
 
-		bool setDate(date machine_Date);
-		bool setTime(int machine_Time);
+		bool setNucleus(int machine_Nucleus);
+		bool setID(int machine_ID);
 
-		list <Maquina> getInfo(list <Reserva> list_Reservas);
+		bool findMachine(int machine_ID);
+
+		bool selectMachine(int machine_ID, date date, int time, int nucleus);
+
+		list listMachine(date date, int time, int nucleus);
+
+		bool deleteReserva(int machine_ID, int reserva_ID);
+
+		string modificarMachine(int machine_ID);
 
 };
 

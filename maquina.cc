@@ -20,12 +20,30 @@ bool setNucleus(int machine_Nucleus)
 	
 }
 
-bool setNOcuped(int machine_NOcuped, int OTime)
+bool setID(int machine_ID)
 {
-
+	M_ID_ = machine_ID;
 }
 
-bool setDate(date machine_Date)
+bool findMachine(int machine_ID)
 {
-
+	if(M_ID_ == machine_ID)
+	{
+		return true;
+	}
+	return false;
 }
+
+bool selectMachine(int machine_ID, date date, int time, int nucleus)
+{
+	if(M_ID_ == machine_ID)
+	{
+		M_Nucleus_ = nucleus;
+	}
+}
+
+list listMachine(date date, int time, int nucleus);
+
+bool deleteReserva(int machine_ID, int reserva_ID);
+
+string modificarMachine(int machine_ID);
