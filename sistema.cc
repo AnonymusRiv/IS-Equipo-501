@@ -31,13 +31,13 @@ void sistema::acceso(int id, string password){
         }
     }
     f.close();
-    ifstream f("usuarios_administradores.txt");
-    while (!f.eof()) {
-        f >> cadena;
+    ifstream fe("usuarios_administradores.txt");
+    while (!fe.eof()) {
+        fe >> cadena;
         n_id=stoi(cadena);
         if(id==n_id){
             encontrado=1;
-            f>>cadena;
+            fe>>cadena;
             cout<<"Indique su contraseña"<<endl;
             cin>>password;
             if(password==cadena){
@@ -51,5 +51,5 @@ void sistema::acceso(int id, string password){
     if(encontrado==0){
         cout<<"ID no encontrado, compruebe que lo ha introducido correctamente, sino contacte con un administrador para darse de alta"<<endl;
     }
-    f.close();
+    fe.close();
 }
