@@ -184,7 +184,7 @@ string modificarReserva(int user_ID, int reserva_ID){
             if(select==1){
                 return "CANCELAR";
             }
-            else(select==2){
+            else if(select==2){
                 return "MODIFICAR";
             }
             else{
