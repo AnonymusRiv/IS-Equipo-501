@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Reserva::Reserva(int res_ID, int user_ID, date res_date, int res_Machine, int res_Nucleus, int res_Time){
+Reserva::Reserva(int user_ID, date res_date, int res_Machine, int res_Nucleus, int res_Time, int res_ID){
     R_ID_=res_ID;
     R_User_=user_ID;
     R_Date_.day=res_date.day;
