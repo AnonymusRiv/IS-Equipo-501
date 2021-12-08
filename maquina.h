@@ -11,13 +11,6 @@
 
 using namespace std;
 
-typedef struct
-{
-	int day;
-	int month;
-	int year;
-} date;
-
 class Maquina
 {
 
@@ -40,7 +33,7 @@ class Maquina
 
 		bool selectMachine(int machine_ID, date date, int time, int nucleus);
 
-		list listMachine(date date, int time, int nucleus);
+		list <string> listMachine(date date, int time, int nucleus);
 
 		bool deleteReserva(int machine_ID, int reserva_ID);
 
