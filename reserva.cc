@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Reserva::Reserva(int user_ID, date res_date, int res_Machine, int res_Nucleus, int res_Time, int res_ID){
+Reserva::Reserva(int res_ID, int user_ID, date res_date, int res_Machine, int res_Nucleus, int res_Time){
     R_ID_=res_ID;
     R_User_=user_ID;
     R_Date_.day=res_date.day;
@@ -18,7 +18,7 @@ Reserva::Reserva(int user_ID, date res_date, int res_Machine, int res_Nucleus, i
     R_Time=res_Time;
 }
 
-bool setDate(date date){
+bool Reserva::setDate(date date){
     auto t1=(date.day+date.month+date.year);
     auto t = std::time(nullptr);
     auto tm = *std::localtime(&t);
@@ -33,7 +33,7 @@ bool setDate(date date){
     return true;
 }
 
-bool setTime(int time){
+bool Reserva::setTime(int time){
     if(time<0){
         cout << "ERROR. El número de días insertado ha de ser mayor a 1\n";
         return false;
@@ -43,7 +43,7 @@ bool setTime(int time){
     }
 }
 
-bool setMachine(int machine_ID){
+bool Reserva::setMachine(int machine_ID){
     ifstream file("machine.txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
@@ -64,7 +64,7 @@ bool setMachine(int machine_ID){
     return false;
 }
 
-bool setNucleus(int nucleus){
+bool Reserva::setNucleus(int nucleus){
     if(nucleus<0){
         cout << "ERROR. El número de núcleos indicados ha de ser mayor a 1\n";
         return false;
@@ -72,7 +72,7 @@ bool setNucleus(int nucleus){
     return true;
 }
 
-bool esUsuarioNormal(int user_ID){
+bool Reserva::esUsuarioNormal(int user_ID){
     ifstream file("usuariosNormales.txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
@@ -92,7 +92,7 @@ bool esUsuarioNormal(int user_ID){
     return false;
 }
 
-bool esUsuarioAdmin(int user_ID){
+bool Reserva::esUsuarioAdmin(int user_ID){
     ifstream file("usuariosAdministradores.txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
@@ -112,7 +112,7 @@ bool esUsuarioAdmin(int user_ID){
     return false;
 }
 
-list <string> fileToList(int user_ID){
+list <string> Reserva::fileToList(int user_ID){
     ifstream file(user_ID+".txt");
         if(!file){
             cout << "ERROR al abrir el fichero\n";
@@ -131,7 +131,7 @@ list <string> fileToList(int user_ID){
     return reservas;
 }
 
-list <string> listReservas(int user_ID){
+list <string> Reserva::listReservas(int user_ID){
     if(esUsuarioNormal(user_ID)==true){
         ifstream file(user_ID+".txt");
         if(!file){
@@ -164,7 +164,7 @@ list <string> listReservas(int user_ID){
     }
 }
 
-string modificarReserva(int user_ID, int reserva_ID){
+string Reserva::modificarReserva(int user_ID, int reserva_ID){
     ifstream file(user_ID+".txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
@@ -196,7 +196,7 @@ string modificarReserva(int user_ID, int reserva_ID){
     file.close();
 }
 
-bool deleteReserva(int user_ID, int reserva_ID){
+bool Reserva::deleteReserva(int user_ID, int reserva_ID){
     ifstream file(user_ID+".txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
