@@ -22,7 +22,7 @@ class Reserva{
         int R_Nucleus;
         int R_Time;
     public:
-        Reserva(int res_ID=0, int user_ID, date res_date, int res_Machine, int res_Nucleus, int res_Time);
+        Reserva(int user_ID, date res_date, int res_Machine, int res_Nucleus, int res_Time, int res_ID=0);
         bool setDate(date date);
         bool setTime(int time);
         bool setMachine(int machine_ID);
