@@ -203,12 +203,24 @@ bool deleteReserva(int user_ID, int reserva_ID){
         EXIT_FAILURE;
     }
 
+    ofstream fileAux("fileAux.txt");
+    if(!fileAux){
+        cout << "ERROR al abrir el fichero\n";
+        EXIT_FAILURE;
+    }
+
+    string reservaID;
     string reserva;
-    getline(file,reserva,' ');
+    getline(file,reservaID,' ');
     while(!file.eof()){
-        if(reserva==to_string(reserva_ID)){
-            //TODO Eliminar una línea del fichero de reservas
+        if(reservaID!=to_string(reserva_ID)){
+            getline(file,reserva,'\n');
+            fileAux >> reserva;
         }
     }
     file.close();
+    fileAux.close();
+    
+    remove(user_ID+".txt");
+    rename("fileAux.txt",(user_ID+".txt"));
 }
