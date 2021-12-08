@@ -21,6 +21,10 @@ class Reserva{
         int R_Machine;
         int R_Nucleus;
         int R_Time;
+
+        bool esUsuarioNormal(int user_ID);
+        bool esUsuarioAdmin(int user_ID);
+        list <string> fileToList(int user_ID);
     public:
         Reserva(int user_ID, date res_date, int res_Machine, int res_Nucleus, int res_Time, int res_ID=0);
         bool setDate(date date);
