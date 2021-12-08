@@ -215,7 +215,7 @@ bool deleteReserva(int user_ID, int reserva_ID){
     while(!file.eof()){
         if(reservaID!=to_string(reserva_ID)){
             getline(file,reserva,'\n');
-            fileAux >> reserva;
+            fileAux << reserva;
         }
     }
     file.close();
