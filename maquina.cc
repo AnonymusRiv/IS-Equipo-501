@@ -126,7 +126,7 @@ bool deleteReserva(int machine_ID, int reserva_ID)
 	{
 		if(M_ID_ == machine_ID && reserva == to_string(reserva_ID))
 		{
-
+			//Eliminar la reserva completa de una maquina
 		}
 	}
 	f.close();
