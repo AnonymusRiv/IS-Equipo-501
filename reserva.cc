@@ -44,7 +44,7 @@ bool Reserva::setTime(int time){
 }
 
 bool Reserva::setMachine(int machine_ID){
-    ifstream file("machine.txt");
+    ifstream file("maquinas.txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
         EXIT_FAILURE;
@@ -73,7 +73,7 @@ bool Reserva::setNucleus(int nucleus){
 }
 
 bool Reserva::esUsuarioNormal(int user_ID){
-    ifstream file("usuariosNormales.txt");
+    ifstream file("usuarios_normales.txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
         EXIT_FAILURE;
@@ -93,7 +93,7 @@ bool Reserva::esUsuarioNormal(int user_ID){
 }
 
 bool Reserva::esUsuarioAdmin(int user_ID){
-    ifstream file("usuariosAdministradores.txt");
+    ifstream file("usuarios_administradores.txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
         EXIT_FAILURE;
@@ -113,7 +113,8 @@ bool Reserva::esUsuarioAdmin(int user_ID){
 }
 
 list <string> Reserva::fileToList(int user_ID){
-    ifstream file(user_ID+".txt");
+    string user=to_string(user_ID);
+    ifstream file(user+".txt");
         if(!file){
             cout << "ERROR al abrir el fichero\n";
             EXIT_FAILURE;
@@ -150,7 +151,8 @@ list <string> unifyList(string user, list <string> aux){
 
 list <string> Reserva::listReservas(int user_ID){
     if(esUsuarioNormal(user_ID)==true){
-        ifstream file(user_ID+".txt");
+        string user=to_string(user_ID);
+        ifstream file(user+".txt");
         if(!file){
             cout << "ERROR al abrir el fichero\n";
             EXIT_FAILURE;
@@ -160,7 +162,7 @@ list <string> Reserva::listReservas(int user_ID){
     }
 
     else if(esUsuarioAdmin(user_ID)==true){
-        ifstream file("usuariosAdministradores.txt");
+        ifstream file("usuarios_administradores.txt");
         if(!file){
             cout << "ERROR al abrir el fichero\n";
             EXIT_FAILURE;
@@ -169,6 +171,7 @@ list <string> Reserva::listReservas(int user_ID){
         string user;
         getline(file,user,' ');
         list <string> aux;
+        aux.clear();
 
         while(!file.eof()){
             ifstream fileUser(user+".txt");
@@ -189,7 +192,8 @@ list <string> Reserva::listReservas(int user_ID){
 }
 
 string Reserva::modificarReserva(int user_ID, int reserva_ID){
-    ifstream file(user_ID+".txt");
+    string user=to_string(user_ID);
+    ifstream file(user+".txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
         EXIT_FAILURE;
@@ -221,7 +225,8 @@ string Reserva::modificarReserva(int user_ID, int reserva_ID){
 }
 
 bool Reserva::deleteReserva(int user_ID, int reserva_ID){
-    ifstream file(user_ID+".txt");
+    string user=to_string(user_ID);
+    ifstream file(user+".txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
         EXIT_FAILURE;
@@ -244,7 +249,15 @@ bool Reserva::deleteReserva(int user_ID, int reserva_ID){
     }
     file.close();
     fileAux.close();
+
+    string filename=user+".txt";
     
-    remove(user_ID+".txt");
-    rename("fileAux.txt",(user_ID+".txt"));
+    if(remove(filename.c_str())!=0){
+    	cout << "ERROR al eliminar el fichero\n";
+    	return false;
+	} 
+    else{
+    	cout << "Fichero eliminado\n";
+    }
+    rename("fileAux.txt",(filename.c_str()));
 }
