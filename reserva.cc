@@ -199,8 +199,8 @@ string Reserva::modificarReserva(int user_ID, int reserva_ID){
     getline(file,reserva,' ');
     while(!file.eof()){
         if(reserva==to_string(reserva_ID)){
-            system("clear");
             selection:
+            system("clear");
             cout << "Seleccione la acción que desea realizar con la reserva:\n";
             cout << "1. ELIMINAR reserva\n";
             cout << "2. MODIFICAR reserva\n";
