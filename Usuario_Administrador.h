@@ -1,5 +1,5 @@
-#ifndef Usuario_Administrador_h
-#define Usuario_Administrador_h
+#ifndef USUARIO_ADMINISTRADOR_H
+#define USUARIO_ADMINISTRADOR_H
 
 #include <string>
 using namespace std;
