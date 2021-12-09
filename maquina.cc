@@ -16,7 +16,7 @@ Maquina::Maquina(int machine_ID, int machine_Nucleus, int machine_NOcuped)
 	M_NOcuped_ = machine_NOcuped;
 }
 
-bool setNucleus(int machine_Nucleus)
+bool Maquina::setNucleus(int machine_Nucleus)
 {
 	if(machine_Nucleus >= 0)
 	{
@@ -28,7 +28,7 @@ bool setNucleus(int machine_Nucleus)
 	
 }
 
-bool setID(int machine_ID)
+bool Maquina::setID(int machine_ID)
 {
 	ifstream f("machine.txt");
 	if(!f)
@@ -40,7 +40,7 @@ bool setID(int machine_ID)
 	int election;
 	string maquina=to_string(machine_ID);
 	string id;
-	getiline(f, id, ' ');
+	getline(f, id, ' ');
 	while(!f.eof())
 	{
 		if(id == maquina)
@@ -48,13 +48,13 @@ bool setID(int machine_ID)
 			f.close();
 			return true;
 		}
-		getiline(f, id, ' ');
+		getline(f, id, ' ');
 	}
 	f.close();
 	return false;
 }
 
-bool findMachine(int machine_ID)
+bool Maquina::findMachine(int machine_ID)
 {
 	ifstream f(machine_ID+".txt");
 	if(!f)
@@ -77,7 +77,7 @@ bool findMachine(int machine_ID)
 	return false;
 }
 
-bool selectMachine(int machine_ID, date date, int time, int nucleus)
+bool Maquina::selectMachine(int machine_ID, date date, int time, int nucleus)
 {
 	ifstream f(machine_ID+".txt");
 	if(!f)
@@ -103,7 +103,7 @@ bool selectMachine(int machine_ID, date date, int time, int nucleus)
 	return false;
 }
 
-list <string> listMachine(date date, int time, int nucleus)
+list <string> Maquina::listMachine(date date, int time, int nucleus)
 {
 	if(M_Nucleus_ <= nucleus)
 	{
@@ -111,9 +111,16 @@ list <string> listMachine(date date, int time, int nucleus)
 	}
 }
 
-bool deleteReserva(int machine_ID, int reserva_ID)
+bool Maquina::deleteReserva(int machine_ID, int reserva_ID)
 {
 	ifstream f(machine_ID+".txt");
+	if(!f)
+	{
+		cout<<"Error al abrir el fichero\n"<<endl;
+		EXIT_FAILURE;
+	}
+
+	ofstream f1("f1.txt");
 	if(!f)
 	{
 		cout<<"Error al abrir el fichero\n"<<endl;
@@ -126,13 +133,29 @@ bool deleteReserva(int machine_ID, int reserva_ID)
 	{
 		if(M_ID_ == machine_ID && reserva == to_string(reserva_ID))
 		{
-			//Eliminar la reserva completa de una maquina
+			getline(f, reserva, '\n');
+			f1<<reserva;
 		}
 	}
 	f.close();
+	f1.close();
+
+	string fnew = maquina+".txt";
+
+	if(remove(fnew.c_str())!=0)
+	{
+		cout<<"Error al eliminar el fichero\n"<<endl;
+		return false;
+	}
+	else
+	{
+		cout<<"El fichero se ha eliminado\n"<<endl;
+	}
+
+	rename("f1.txt", (fnew.c_str()));
 }
 
-string modificarMachine(int machine_ID)
+string Maquina::modificarMachine(int machine_ID)
 {
 	ifstream f(machine_ID+".txt");
 	if(!f)
@@ -169,5 +192,5 @@ string modificarMachine(int machine_ID)
 			goto sel;
 		}
 	}
-	f.close;
+	f.close();
 }
