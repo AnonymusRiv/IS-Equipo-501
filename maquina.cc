@@ -120,16 +120,39 @@ bool Maquina::deleteReserva(int machine_ID, int reserva_ID)
 		EXIT_FAILURE;
 	}
 
+	ofstream f1("f1.txt");
+	if(!f)
+	{
+		cout<<"Error al abrir el fichero\n"<<endl;
+		EXIT_FAILURE;
+	}
+
 	string reserva;
 	getline(f, reserva, ' ');
 	while(!f.eof())
 	{
 		if(M_ID_ == machine_ID && reserva == to_string(reserva_ID))
 		{
-			//Eliminar la reserva completa de una maquina
+			getline(f, reserva, '\n');
+			f1<<reserva;
 		}
 	}
 	f.close();
+	f1.close();
+
+	string fnew = maquina+".txt";
+
+	if(remove(fnew.c_str())!=0)
+	{
+		cout<<"Error al eliminar el fichero\n"<<endl;
+		return false;
+	}
+	else
+	{
+		cout<<"El fichero se ha eliminado\n"<<endl;
+	}
+
+	rename("f1.txt", (fnew.c_str()));
 }
 
 string Maquina::modificarMachine(int machine_ID)
