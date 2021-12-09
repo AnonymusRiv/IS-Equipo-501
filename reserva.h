@@ -1,7 +1,6 @@
 #ifndef RESERVA_H
 #define RESERVA_H
 
-#include <string>
 #include <ctime>
 #include <list>
 #include "Usuario_Normal.h"
