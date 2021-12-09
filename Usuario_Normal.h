@@ -1,5 +1,5 @@
-#ifndef Usuario_Normal_h
-#define Usuario_Normal_h
+#ifndef USUARIO_NORMAL_H
+#define USUARIO_NORMAL_H
 
 #include <string>
 using namespace std;
@@ -18,6 +18,7 @@ class Usuario_Normal{
 		bool setNucleus(int nucleus);
 		bool setTime(int time);
 		inline string getPassword(){return UN_Password_; };
+		string modificarUsuario(int id);
 		bool deleteUser(int id);
 	public:
 		Usuario_Normal(int id, string name, string password, string mail, int nucleus=0, int time=0);
