@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Reserva::Reserva(int res_ID, int user_ID, date res_date, int res_Machine, int res_Nucleus, int res_Time){
+Reserva::Reserva(int user_ID, date res_date, int res_Machine, int res_Nucleus, int res_Time, int res_ID){
     R_ID_=res_ID;
     R_User_=user_ID;
     R_Date_.day=res_date.day;
@@ -19,7 +19,7 @@ Reserva::Reserva(int res_ID, int user_ID, date res_date, int res_Machine, int re
 }
 
 bool Reserva::setDate(date date){
-    auto t1=(date.day+date.month+date.year);
+    auto t1=(date.day+"/"+date.month+"/"+date.year);
     auto t = std::time(nullptr);
     auto tm = *std::localtime(&t);
     std::ostringstream oss;
@@ -131,6 +131,23 @@ list <string> Reserva::fileToList(int user_ID){
     return reservas;
 }
 
+list <string> unifyList(string user, list <string> aux){
+    ifstream file(user+".txt");
+    if(!file){
+    cout << "ERROR al abrir el fichero\n";
+    EXIT_FAILURE;
+    }
+
+    string datos;
+    getline(file,datos,'\n');
+
+    while(!file.eof()){
+        aux.push_back(datos);
+        getline(file,datos,'\n');
+    }
+
+}
+
 list <string> Reserva::listReservas(int user_ID){
     if(esUsuarioNormal(user_ID)==true){
         ifstream file(user_ID+".txt");
@@ -148,11 +165,18 @@ list <string> Reserva::listReservas(int user_ID){
             cout << "ERROR al abrir el fichero\n";
             EXIT_FAILURE;
         }
+
         string user;
         getline(file,user,' ');
         list <string> aux;
+
         while(!file.eof()){
-            aux.push_back(fileToList(stoi(user)));
+            ifstream fileUser(user+".txt");
+            if(!fileUser){
+            cout << "ERROR al abrir el fichero\n";
+            EXIT_FAILURE;
+            }
+            unifyList(user,aux);
             getline(file,user,'\n');
         }
         file.close();
