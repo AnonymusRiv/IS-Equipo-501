@@ -112,7 +112,19 @@ list <string> Maquina::listMachine(date date, int time, int nucleus)
 		EXIT_FAILURE;
 	}
 
-	//
+
+	string line;
+	string nucl;
+	string nocup;
+
+	string delimiter=' ';
+	getline(f, line, '\n');
+	line.erase(0, line.find(delimiter) + delimiter.length());
+	nucl = line.substr(0, line.find(delimiter));
+	line.erase(0, line.find(delimiter) + delimiter.length());
+	nocup = line.substr(0, line.find(delimiter));
+
+
 
 	while(!f.eof)
 	{
