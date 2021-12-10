@@ -92,11 +92,11 @@ bool Maquina::selectMachine(int machine_ID, date date, int time, int nucleus)
 	{
 		if(maquina == to_string(machine_ID))
 		{
-			R_Date_ = date;
-			M_Nucleus_ = nucleus;
-			R_Time_ = time;
-			f.close();
-			return true;
+			if(nucleus<=(M_Nucleus_ - M_NOcuped_)
+			{
+				f.close();
+				return true;
+			}
 		}
 	}
 	f.close();
@@ -105,10 +105,28 @@ bool Maquina::selectMachine(int machine_ID, date date, int time, int nucleus)
 
 list <string> Maquina::listMachine(date date, int time, int nucleus)
 {
-	if(M_Nucleus_ <= nucleus)
+	ifstream f("machine.txt");
+	if(!f)
 	{
-		return Reserva;
+		cout<<"Error al abrir el fichero\n"<<endl;
+		EXIT_FAILURE;
 	}
+
+	//
+
+	while(!f.eof)
+	{
+		list <string> n;
+
+		if(nucleus<=(nucl - nocup)
+		{
+
+			f.close();
+			n.push_back;
+			return n;
+		}
+	}
+	f.close();
 }
 
 bool Maquina::deleteReserva(int machine_ID, int reserva_ID)
