@@ -72,7 +72,7 @@ bool Reserva::setNucleus(int nucleus){
     return true;
 }
 
-bool Reserva::esUsuarioNormal(int user_ID){
+bool esUsuarioNormal(int user_ID){
     ifstream file("usuarios_normales.txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
@@ -92,7 +92,7 @@ bool Reserva::esUsuarioNormal(int user_ID){
     return false;
 }
 
-bool Reserva::esUsuarioAdmin(int user_ID){
+bool esUsuarioAdmin(int user_ID){
     ifstream file("usuarios_administradores.txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
@@ -112,7 +112,7 @@ bool Reserva::esUsuarioAdmin(int user_ID){
     return false;
 }
 
-list <string> Reserva::fileToList(int user_ID){
+list <string> fileToList(int user_ID){
     string user=to_string(user_ID);
     ifstream file(user+".txt");
         if(!file){
@@ -260,4 +260,5 @@ bool Reserva::deleteReserva(int user_ID, int reserva_ID){
     	cout << "Fichero eliminado\n";
     }
     rename("fileAux.txt",(filename.c_str()));
+    return true;
 }
