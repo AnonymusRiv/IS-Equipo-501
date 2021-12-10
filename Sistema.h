@@ -5,13 +5,13 @@
 
 using namespace std;
 
-class sistema{
+class Sistema{
     private:
 
 
     public:
-        sistema();
-        void acceso(int ID, string Password);
+        Sistema();
+        void login(int ID, string Password);
 };
 
 #endif
