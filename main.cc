@@ -23,6 +23,7 @@ int main(){
     int ID;
     string cadena;
     string Password;
+    string respuesta;
     int opcion=0;
     system("clear");
     cout<<"BIENVENIDO AL SISTEMA DE GESTION DE NUCLEOS"<<endl;
@@ -98,6 +99,13 @@ int main(){
             break;
 
             case 4:
+                cout<<"Introduzca el ID de la maquina que quiere modificar o el ID de una maquina nueva: ";
+                cin>>m_id;
+                respuesta=m.modificarMachine(m_id);    //añadir dentro de modificarMachine la opción de cancelar
+                if(respuesta=="Eliminar"){
+
+                }
+                else if(respuesta=="Modificar")
 
             break;
             case 5:

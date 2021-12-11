@@ -23,9 +23,8 @@ bool Maquina::setNucleus(int machine_Nucleus)
 		M_Nucleus_ = machine_Nucleus;
 		return true;
 	}
-	cout<<"Debe introducir un numero positivo\n"<<endl;
+	cout<<"Debe introducir un numero positivo"<<endl;
 	return false;
-	
 }
 
 bool Maquina::setID(int machine_ID)
@@ -33,7 +32,7 @@ bool Maquina::setID(int machine_ID)
 	ifstream f("machine.txt");
 	if(!f)
 	{
-		cout<<"Error al abrir el fichero\n"<<endl;
+		cout<<"Error al abrir el fichero"<<endl;
 		EXIT_FAILURE;
 	}
 
@@ -59,7 +58,7 @@ bool Maquina::findMachine(int machine_ID)
 	ifstream f(machine_ID+".txt");
 	if(!f)
 	{
-		cout<<"Error al abrir el fichero\n"<<endl;
+		cout<<"Error al abrir el fichero"<<endl;
 		EXIT_FAILURE;
 	}
 
@@ -82,7 +81,7 @@ bool Maquina::selectMachine(int machine_ID, date date, int time, int nucleus)
 	ifstream f(machine_ID+".txt");
 	if(!f)
 	{
-		cout<<"Error al abrir el fichero\n"<<endl;
+		cout<<"Error al abrir el fichero"<<endl;
 		EXIT_FAILURE;
 	}
 
@@ -92,7 +91,7 @@ bool Maquina::selectMachine(int machine_ID, date date, int time, int nucleus)
 	{
 		if(maquina == to_string(machine_ID))
 		{
-			if(nucleus<=(M_Nucleus_ - M_NOcuped_)
+			if(nucleus<=(M_Nucleus_ - M_NOcuped_))
 			{
 				f.close();
 				return true;
@@ -108,7 +107,7 @@ list <string> Maquina::listMachine(date date, int time, int nucleus)
 	ifstream f("machine.txt");
 	if(!f)
 	{
-		cout<<"Error al abrir el fichero\n"<<endl;
+		cout<<"Error al abrir el fichero"<<endl;
 		EXIT_FAILURE;
 	}
 
@@ -117,20 +116,24 @@ list <string> Maquina::listMachine(date date, int time, int nucleus)
 	string nucl;
 	string nocup;
 
-	string delimiter=' ';
+	int nucleus;
+	int nucleusOcup;
+
+	string delimiter=" ";
 	getline(f, line, '\n');
 	line.erase(0, line.find(delimiter) + delimiter.length());
 	nucl = line.substr(0, line.find(delimiter));
 	line.erase(0, line.find(delimiter) + delimiter.length());
 	nocup = line.substr(0, line.find(delimiter));
 
+	nucleus=stoi(nucl);
+	nucleusOcup=stoi(nocup);
 
-
-	while(!f.eof)
+	while(!f.eof())
 	{
 		list <string> n;
 
-		if(nucleus<=(nucl - nocup)
+		if(nucleus<=(nucleus - nucleusOcup))
 		{
 
 			f.close();
@@ -146,14 +149,14 @@ bool Maquina::deleteReserva(int machine_ID, int reserva_ID)
 	ifstream f(machine_ID+".txt");
 	if(!f)
 	{
-		cout<<"Error al abrir el fichero\n"<<endl;
+		cout<<"Error al abrir el fichero"<<endl;
 		EXIT_FAILURE;
 	}
 
 	ofstream f1("f1.txt");
 	if(!f)
 	{
-		cout<<"Error al abrir el fichero\n"<<endl;
+		cout<<"Error al abrir el fichero"<<endl;
 		EXIT_FAILURE;
 	}
 
@@ -170,16 +173,16 @@ bool Maquina::deleteReserva(int machine_ID, int reserva_ID)
 	f.close();
 	f1.close();
 
-	string fnew = maquina+".txt";
+	string fnew = machine_ID+".txt";
 
 	if(remove(fnew.c_str())!=0)
 	{
-		cout<<"Error al eliminar el fichero\n"<<endl;
+		cout<<"Error al eliminar el fichero"<<endl;
 		return false;
 	}
 	else
 	{
-		cout<<"El fichero se ha eliminado\n"<<endl;
+		cout<<"El fichero se ha eliminado"<<endl;
 	}
 
 	rename("f1.txt", (fnew.c_str()));
@@ -190,7 +193,7 @@ string Maquina::modificarMachine(int machine_ID)
 	ifstream f(machine_ID+".txt");
 	if(!f)
 	{
-		cout<<"Error al abrir el fichero\n"<<endl;
+		cout<<"Error al abrir el fichero"<<endl;
 		EXIT_FAILURE;
 	}
 
@@ -203,16 +206,16 @@ string Maquina::modificarMachine(int machine_ID)
 		system("clear");
 
 		sel:
-		cout<<"1. Eliminar maquina.\n"<<endl;
-		cout<<"2. Modificar maquina.\n"<<endl;
-		cout<<"Seleccione una accion:\n"<<endl;
+		cout<<"Seleccione una accion:"<<endl;
+		cout<<"1. Eliminar maquina."<<endl;
+		cout<<"2. Modificar maquina."<<endl;
 		cin>>election;
 
 		if(election == 1)
 		{
 			return "Eliminar";
 		}
-		else if(election == 1)
+		else if(election == 2)
 		{
 			return "Modificar";
 		}
