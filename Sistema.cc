@@ -16,14 +16,13 @@ void Sistema::login(int ID, string Password){
         cout<<"ERROR al abrir el fichero"<<endl;
     }
     getline(file,cadena,' ');
-    while (!file.eof()){
+    while (!file.eof() && encontrado==0){
         n_id=stoi(cadena);
         if(ID==n_id){
             encontrado=1;
             getline(file,cadena,' ');
-            cout<<"Indique su contraseña"<<endl;
-            cin>>Password;
             if(Password==cadena){
+                getline(file,cadena,' ');
                 cout<<"login correcto"<<endl;
             }
             else{
@@ -32,16 +31,15 @@ void Sistema::login(int ID, string Password){
         }
     }
     file.close();
-    ifstream file2("usuarios_administradores.txt");
-    while (!file2.eof()) {
+    ifstream file2("Usuarios_Administradores.txt");
+    while (!file2.eof() && encontrado==0) {
         getline(file2,cadena,' ');
         n_id=stoi(cadena);
         if(ID==n_id){
             encontrado=1;
             getline(file,cadena,' ');
-            cout<<"Indique su contraseña"<<endl;
-            cin>>Password;
             if(Password==cadena){
+                getline(file,cadena,' ');
                 cout<<"login correcto"<<endl;
             }
             else{
@@ -49,8 +47,12 @@ void Sistema::login(int ID, string Password){
             }
         }
     }
+    file.close();
     if(encontrado==0){
         cout<<"ID no encontrado, compruebe que lo ha introducido correctamente, sino contacte con un administrador para darse de alta"<<endl;
     }
-    file.close();
+    else{
+        cout<<"Se ha accedido correctamente al sistema"<<endl;
+        cout<<"Bienvenido "<<cadena<<endl;
+    }
 }

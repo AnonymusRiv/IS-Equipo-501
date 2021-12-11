@@ -1,7 +1,7 @@
-//newRes_ID user_ID res_Date.day/res_Date.month/res_Date.year machine_ID res_Nucleus
+//newRes_ID machine_ID res_Nucleus res_Date.day/res_Date.month/res_Date.year
 /*
-int newRes_ID = numero de 8 caracteres
-int user_ID = numero de 8 caracteres
+int newRes_ID = numero sin minimo ni maximo, no repetible
+int user_ID = numero sin minimo ni maximo, no repetible
 int res_Date.day = numero de 2 caracteres
 int res_Date.month = numero de 2 caracteres
 int res_Date.year = numero de 2 caracteres
