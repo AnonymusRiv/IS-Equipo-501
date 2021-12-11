@@ -51,12 +51,12 @@ bool Usuario_Normal::setTime(int time){
 	return true;
 }
 
-string modificarUsuario(int id){
+string Usuario_Normal::modificarUsuario(int id){
 	string usuario_normalID=to_string(id);
 	ifstream file(usuario_normalID+".txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
-        EXIT_FAILURE;
+        exit(EXIT_FAILURE);
     }
     int select;
     string usuario;
@@ -105,16 +105,25 @@ bool Usuario_Normal::setPassword(string password){
 	if(password==""){
 		cout << "ERROR. Contraseña no válida" << endl;
 		return false;
+	}else if(password.length()<6){
+		cout << "ERROR. Contraseña no válida, inserte al menos seis caracteres" << endl;
+		return false;
 	}
 	UN_Password_=password;
-		return true;
+	return true;
 }
 
 bool Usuario_Normal::setMail(string mail){
 	if(mail==""){
 		cout << "ERROR. Correo no válido" << endl;
 		return false;
+	}else if(mail.find('@')==string::npos){
+		cout << "ERROR. Correo no válido, falta el @" << endl;
+		return false;
+	}else if(mail.find('.')==string::npos){
+		cout << "ERROR. Correo no válido, falta el dominio" << endl;
+		return false;
 	}
 	UN_Mail_=mail;
-		return true;
+	return true;
 }

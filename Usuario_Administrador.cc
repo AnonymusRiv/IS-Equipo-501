@@ -21,7 +21,13 @@ Usuario_administrador_de_maquinas::Usuario_administrador_de_maquinas(int id, str
 bool Usuario_administrador::setMail(string mail){
 	if(mail==""){
 		cout << "ERROR. Correo no válido" << endl;
-			return false;
+		return false;
+	}else if(mail.find('@')==string::npos){
+		cout << "ERROR. Correo no válido, falta el @" << endl;
+		return false;
+	}else if(mail.find('.')==string::npos){
+		cout << "ERROR. Correo no válido, falta el dominio" << endl;
+		return false;
 	}
 	UA_Mail_=mail;
 	return true;
@@ -30,6 +36,9 @@ bool Usuario_administrador::setMail(string mail){
 bool Usuario_administrador::setPassword(string password){
 	if(password==""){
 		cout << "ERROR. Contraseña no válida" << endl;
+		return false;
+	}else if(password.length()<6){
+		cout << "ERROR. Contraseña no válida, inserte al menos seis caracteres" << endl;
 		return false;
 	}
 	UA_Password_=password;
