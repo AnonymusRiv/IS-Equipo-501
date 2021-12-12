@@ -4,8 +4,7 @@
 #include "cute_runner.h"
 #include "maquina.h"
 #include "reserva.h"
-#include "Usuario_Normal.h"
-#include "Usuario_Administrador.h"
+
 
 
 void thisIsATest() {
@@ -14,44 +13,44 @@ void thisIsATest() {
 
 void testSetNucleus()
 {
-	Maquina m = Maquina(1,9,10,4,15);
+	Maquina m = Maquina(1,10,15);
 	bool resultado = m.setNucleus(-2);
 	ASSERT(resultado == false);
 
-	Maquina m1 = Maquina(1,10,3,12,2);
+	Maquina m1 = Maquina(1,10,2);
 	bool resultado = m1.setNucleus(5);
 	ASSERT(resultado == true);
 }
 
 void testSetID()
 {
-	Maquina m = Maquina(2,12,2,2);
+	Maquina m = Maquina(2,12,2);
 	bool resultado = m.setID(12);
 	ASSERT(resultado == false);
 
-	Maquina m1 = Maquina(4,4,4,4);
+	Maquina m1 = Maquina(4,4,4);
 	bool resultado = m1.setID(4);
 	ASSERT(resultado == true);
 }
 
 void testFindMachine()
 {
-	Maquina m = Maquina(5,5,5,32,5);
+	Maquina m = Maquina(5,32,5);
 	bool resultado = m.setID(32);
 	ASSERT(resultado == false);
 
-	Maquina m1 = Maquina(1,1,1,1,1);
+	Maquina m1 = Maquina(1,1,1);
 	bool resultado = m1.setID(1);
 	ASSERT(resultado == true);
 }
 
 void testSelectMachine()
 {
-	Maquina m = Maquina(1,2,5,5,5);
+	Maquina m = Maquina(1,2,5);
 	bool resultado = m.setID(1,2);
 	ASSERT(resultado == false);
 
-	Maquina m1 = Maquina(1,1,4,4,4);
+	Maquina m1 = Maquina(1,1,4);
 	bool resultado = m1.setID(1,1);
 	ASSERT(resultado == true);
 }
