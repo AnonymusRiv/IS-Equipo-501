@@ -17,61 +17,61 @@ void testSetDate(){
 	hoy.month="12";
 	hoy.year="2021";
 	Reserva res1=Reserva(1, hoy, 1, 1, 1, 1);
-	bool resultado=res1.setDate(hoy);
-	ASSERT(resultado==true);
+	bool resultado1=res1.setDate(hoy);
+	ASSERT(resultado1==true);
 
 	date ayer;
 	ayer.day="16";
 	ayer.month="12";
 	ayer.year="2021";
 	Reserva res1=Reserva(1, ayer, 1, 1, 1, 1);
-	bool resultado=res1.setDate(ayer);
-	ASSERT(resultado==true);
+	bool resultado2=res1.setDate(ayer);
+	ASSERT(resultado2==true);
 }
 
 void testSetTime(){
 	date hoy;
-	Reserva res1=Reserva(1,hoy,1,1,-2);
-	bool resultado=res1.setTime(-2);
-	ASSERT(resultado==false);
+	Reserva res1=Reserva(1,hoy,1,1,1);
+	bool resultado1=res1.setTime(-2);
+	ASSERT(resultado1==false);
 
-	Reserva res2=Reserva(1,hoy,1,1,2);
-	bool resultado=res2.setTime(2);
-	ASSERT(resultado==true);
+	Reserva res2=Reserva(1,hoy,1,1,1);
+	bool resultado2=res2.setTime(2);
+	ASSERT(resultado2==true);
 }
 
 void testSetMachine(){
 	date hoy;
-	Reserva res1=Reserva(1,hoy,51,1,1);
-	bool resultado=res1.setMachine(51);
-	ASSERT(resultado==false);
+	Reserva res1=Reserva(1,hoy,1,1,1);
+	bool resultado1=res1.setMachine(51);
+	ASSERT(resultado1==false);
 
 	Reserva res2=Reserva(1,hoy,1,1,1);
-	bool resultado=res2.setMachine(1);
-	ASSERT(resultado==true);
+	bool resultado2=res2.setMachine(2);
+	ASSERT(resultado2==true);
 }
 
 void testSetNucleus(){
 	date hoy;
-	Reserva res1=Reserva(1,hoy,1,15,1);
-	bool resultado=res1.setNucleus(15);
-	ASSERT(resultado==false);
+	Reserva res1=Reserva(1,hoy,1,1,1);
+	bool resultado1=res1.setNucleus(15);
+	ASSERT(resultado1==false);
 
-	Reserva res2=Reserva(1,hoy,1,3,1);
-	bool resultado=res2.setNucleus(3);
-	ASSERT(resultado==true);
+	Reserva res2=Reserva(1,hoy,1,1,1);
+	bool resultado2=res2.setNucleus(3);
+	ASSERT(resultado2==true);
 }
 
 void testDeleteReserva(){
 	date hoy;
-	Reserva res1=Reserva(-2,hoy,1,1,1,2);
-	bool resultado=res1.deleteReserva(-2,2);
-	ASSERT(resultado==false);
+	Reserva res1=Reserva(2,hoy,1,1,1,2);
+	bool resultado1=res1.deleteReserva(-2,2);
+	ASSERT(resultado1==false);
 
 	date hoy;
 	Reserva res2=Reserva(2,hoy,1,1,1,2);
-	bool resultado=res1.deleteReserva(2,2);
-	ASSERT(resultado==true);
+	bool resultado2=res1.deleteReserva(2,2);
+	ASSERT(resultado2==true);
 }
 
 bool runAllTests(int argc, char const *argv[]) {
