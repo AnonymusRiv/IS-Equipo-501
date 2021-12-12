@@ -3,7 +3,6 @@
 #include "xml_listener.h"
 #include "cute_runner.h"
 #include "maquina.h"
-#include "reserva.h"
 
 
 
@@ -13,12 +12,14 @@ void thisIsATest() {
 
 void testSetNucleus()
 {
-	Maquina m = Maquina(1,10,15);
-	bool resultado = m.setNucleus(-2);
+	int nucl = -2;
+	Maquina m = Maquina(1,nucl,15);
+	bool resultado = m.setNucleus(nucl);
 	ASSERT(resultado == false);
 
-	Maquina m1 = Maquina(1,10,2);
-	bool resultado = m1.setNucleus(5);
+	int nucl1 = 5;
+	Maquina m1 = Maquina(1,nucl1,2);
+	resultado = m1.setNucleus(nucl1);
 	ASSERT(resultado == true);
 }
 
@@ -29,29 +30,29 @@ void testSetID()
 	ASSERT(resultado == false);
 
 	Maquina m1 = Maquina(4,4,4);
-	bool resultado = m1.setID(4);
+	 resultado = m1.setID(4);
 	ASSERT(resultado == true);
 }
 
 void testFindMachine()
 {
 	Maquina m = Maquina(5,32,5);
-	bool resultado = m.setID(32);
+	bool resultado = m.findMachine(32);
 	ASSERT(resultado == false);
 
 	Maquina m1 = Maquina(1,1,1);
-	bool resultado = m1.setID(1);
+	resultado = m1.findMachine(1);
 	ASSERT(resultado == true);
 }
 
 void testSelectMachine()
 {
 	Maquina m = Maquina(1,2,5);
-	bool resultado = m.setID(1,2);
+	bool resultado = m.selectMachine(1,2);
 	ASSERT(resultado == false);
 
 	Maquina m1 = Maquina(1,1,4);
-	bool resultado = m1.setID(1,1);
+	resultado = m1.selectMachine(1,1);
 	ASSERT(resultado == true);
 }
 
