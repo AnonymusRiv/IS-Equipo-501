@@ -44,6 +44,9 @@ bool Reserva::setTime(int time){
 }
 
 bool Reserva::setMachine(int machine_ID){
+    if(machine_ID<0){
+        return false;
+    }
     ifstream file("maquinas.txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
