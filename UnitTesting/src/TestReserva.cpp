@@ -3,9 +3,6 @@
 #include "xml_listener.h"
 #include "cute_runner.h"
 #include "reserva.h"
-#include "Usuario_Administrador.h"
-#include "Usuario_Normal.h"
-#include "maquina.h"
 
 void thisIsATest() {
 	ASSERTM("start writing tests", false);	
@@ -67,6 +64,7 @@ void testDeleteReserva(){
 	Reserva res1=Reserva(2,hoy,1,1,1,2);
 	bool resultado1=res1.deleteReserva(-2,2);
 	ASSERT(resultado1==false);
+
 
 	date hoy;
 	Reserva res2=Reserva(2,hoy,1,1,1,2);

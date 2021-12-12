@@ -146,7 +146,7 @@ list <string> unifyList(string user, list <string> aux){
         aux.push_back(datos);
         getline(file,datos,'\n');
     }
-
+    return aux;
 }
 
 list <string> Reserva::listReservas(int user_ID){
@@ -187,7 +187,7 @@ list <string> Reserva::listReservas(int user_ID){
     }
     else{
         cout << "ERROR. No existen reservas asociadas al identificador insertado\n";
-        EXIT_FAILURE;
+        exit(EXIT_FAILURE);
     }
 }
 
