@@ -70,7 +70,7 @@ string Usuario_Normal::modificarUsuario(int id){
             cout << "2. MODIFICAR usuario\n";
             cin >> select;
             if(select==1){
-                return "CANCELAR";
+                return "ELIMINAR";
             }
             else if(select==2){
                 return "MODIFICAR";

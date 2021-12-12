@@ -190,7 +190,7 @@ bool Maquina::deleteReserva(int machine_ID, int reserva_ID)
 
 string Maquina::modificarMachine(int machine_ID)
 {
-	ifstream f(machine_ID+".txt");
+	ifstream f("Maquinas.txt");
 	if(!f)
 	{
 		cout<<"Error al abrir el fichero"<<endl;
@@ -199,6 +199,7 @@ string Maquina::modificarMachine(int machine_ID)
 
 	int election;
 	string maquina;
+	getline(f, maquina, ' ');
 	while(!f.eof())
 	{
 		if(maquina == to_string(machine_ID))
@@ -213,11 +214,11 @@ string Maquina::modificarMachine(int machine_ID)
 
 		if(election == 1)
 		{
-			return "Eliminar";
+			return "ELIMINAR";
 		}
 		else if(election == 2)
 		{
-			return "Modificar";
+			return "MODIFICAR";
 		}
 		else
 		{
@@ -226,4 +227,5 @@ string Maquina::modificarMachine(int machine_ID)
 		}
 	}
 	f.close();
+	return "CREAR";
 }

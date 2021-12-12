@@ -13,6 +13,7 @@ int main(){
     Sistema s;
     Reserva r; //se q tengo q añadirle los parametros y por eso da error esta linea y la siguiente, cuando acabe lo demas lo añadire
     Maquina m;
+    Usuario_Normal UN;
 
     date fecha;
     int time;
@@ -42,6 +43,7 @@ int main(){
         cout<<"2. Modificar reserva"<<endl;
         cout<<"3. Modificar usuario"<<endl;
         cout<<"4. Modificar maquina"<<endl;
+        cout<<"5. Salir del sistema"<<endl;
         switch(opcion){
             case 1:
                 cout<<"Introduzca la fecha de comienzo de la reserva:"<<endl;
@@ -111,11 +113,13 @@ int main(){
                 while(it != reservas.end()){
                     cout<<"\t"<<*it++<<endl;
                 }
-                cout<<"Introduzca el ID del usuario y el ID de la reserva a modificar."<<endl;
+                cout<<"Introduzca el ID del usuario, el ID de la reserva y el ID de la maquina a modificar."<<endl;
                 cout<<"ID usuario: ";
                 cin>>user_id;
                 cout<<"\nID reserva: ";
                 cin>>r_id;
+                cout<<"\nID maquina: ";
+                cin>>m_id;
                 cout<<endl;
                 respuesta=r.modificarReserva(user_id, r_id);
                 if(respuesta=="ELIMINAR"){
@@ -123,7 +127,7 @@ int main(){
                         cout<<"Saliendo del sistema..."<<endl;
                         EXIT_FAILURE;
                     }
-                    if(m.deleteReserva(m_id, r_id)==false){     //hay que  buscar el m_id
+                    if(m.deleteReserva(m_id, r_id)==false){
                         cout<<"Saliendo del sistema..."<<endl;
                         EXIT_FAILURE;
                     }
@@ -185,14 +189,26 @@ int main(){
                         cin>>m_id;
                         if(m.selectMachine(m_id, fecha, time, nucleus)==false){
                             cout<<"ERROR"<<endl;
-                        EXIT_FAILURE;
+                            EXIT_FAILURE;
                         }
                     }
+                    //añadir una funcion para guardar la reserva en el fichero
                     cout<<"Reserva modificada correctamente."<<endl;
                 }
             break;
 
             case 3:
+                //poner si no es UA que dalga q no tiene permisos
+                cout<<"Introduzca el ID de la persona a modificar: ";
+                cin>>user_id;
+                respuesta=UN.modificarUsuario(user_id);
+                //cambiar las funciones a publicas de UA_maquinas y UA_usuarios
+                if(respuesta=="ELIMINAR"){
+
+                }
+                else{
+
+                }
 
             break;
 
@@ -209,7 +225,8 @@ int main(){
 
             break;
             case 5:
-
+                cout<<"Gracias por usar el sistema de gestion de nucleos"<<endl;
+                cout<<"¡Hasta pronto!"<<endl;
             break;
         }
     }
