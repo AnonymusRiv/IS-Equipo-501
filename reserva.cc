@@ -20,10 +20,10 @@ Reserva::Reserva(int user_ID, date res_date, int res_Machine, int res_Nucleus, i
 
 bool Reserva::setDate(date date){
     auto t1=(date.day+"/"+date.month+"/"+date.year);
-    auto t = std::time(nullptr);
-    auto tm = *std::localtime(&t);
-    std::ostringstream oss;
-    oss << std::put_time(&tm, "%d%m%Y");
+    auto t = time(nullptr);
+    auto tm = *localtime(&t);
+    ostringstream oss;
+    oss << put_time(&tm, "%d/%m/%Y");
     auto str = oss.str();
 
     if(t1<str){
@@ -75,7 +75,7 @@ bool Reserva::setNucleus(int nucleus){
     return true;
 }
 
-bool esUsuarioNormal(int user_ID){
+bool Reserva::esUsuarioNormal(int user_ID){
     ifstream file("usuarios_normales.txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
@@ -95,7 +95,7 @@ bool esUsuarioNormal(int user_ID){
     return false;
 }
 
-bool esUsuarioAdmin(int user_ID){
+bool Reserva::esUsuarioAdmin(int user_ID){
     ifstream file("usuarios_administradores.txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
@@ -115,7 +115,7 @@ bool esUsuarioAdmin(int user_ID){
     return false;
 }
 
-list <string> fileToList(int user_ID){
+list <string> Reserva::fileToList(int user_ID){
     string user=to_string(user_ID);
     ifstream file(user+".txt");
         if(!file){
@@ -135,7 +135,7 @@ list <string> fileToList(int user_ID){
     return reservas;
 }
 
-list <string> unifyList(string user, list <string> aux){
+list <string> Reserva::unifyList(string user, list <string> aux){
     ifstream file(user+".txt");
     if(!file){
     cout << "ERROR al abrir el fichero\n";
@@ -149,6 +149,8 @@ list <string> unifyList(string user, list <string> aux){
         aux.push_back(datos);
         getline(file,datos,'\n');
     }
+
+    return aux;
 
 }
 
@@ -206,8 +208,8 @@ string Reserva::modificarReserva(int user_ID, int reserva_ID){
     getline(file,reserva,' ');
     while(!file.eof()){
         if(reserva==to_string(reserva_ID)){
-            selection:
             system("clear");
+            selection:
             cout << "Seleccione la acción que desea realizar con la reserva:\n";
             cout << "1. ELIMINAR reserva\n";
             cout << "2. MODIFICAR reserva\n";
