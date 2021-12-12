@@ -47,12 +47,17 @@ void testFindMachine()
 
 void testSelectMachine()
 {
+	date hoy;
+	hoy.day="16";
+	hoy.month="12";
+	hoy.year="2021";
+
 	Maquina m = Maquina(1,2,5);
-	bool resultado = m.selectMachine(1,2);
+	bool resultado = m.selectMachine(1,hoy,5,2);
 	ASSERT(resultado == false);
 
 	Maquina m1 = Maquina(1,1,4);
-	resultado = m1.selectMachine(1,1);
+	resultado = m1.selectMachine(1,hoy,3,1);
 	ASSERT(resultado == true);
 }
 
