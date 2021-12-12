@@ -18,12 +18,12 @@ void testSetDate(){
 	ASSERT(resultado1==true);
 
 	date ayer;
-	ayer.day="16";
+	ayer.day="01";
 	ayer.month="12";
 	ayer.year="2021";
 	Reserva res2=Reserva(1, ayer, 1, 1, 1, 1);
 	bool resultado2=res2.setDate(ayer);
-	ASSERT(resultado2==true);
+	ASSERT(resultado2==false);
 }
 
 void testSetTime(){
