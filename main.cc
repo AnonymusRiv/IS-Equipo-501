@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <chrono>
+#include <list>
 #include "maquina.h"
 #include "reserva.h"
 #include "Sistema.h"
@@ -18,6 +18,7 @@ int main(){
     int time;
     int m_id;
     int nucleus;
+    list <string> maquinas;
 
 
     int ID;
@@ -86,8 +87,10 @@ int main(){
 
             if(m.selectMachine(m_id, fecha, time, nucleus)==false){
                 //añadir dentro del fichero maquina.cc la escritura de la maquina en la base de datos
+                maquinas=m.listMachine(fecha, time, nucleus);
+                
             }
-
+            cout<<"Reserva realizada correctamente."<<endl;
 
             break;
             case 2:

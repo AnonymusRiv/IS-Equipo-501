@@ -29,7 +29,7 @@ bool Maquina::setNucleus(int machine_Nucleus)
 
 bool Maquina::setID(int machine_ID)
 {
-	ifstream f("machine.txt");
+	ifstream f("Maquinas.txt");
 	if(!f)
 	{
 		cout<<"Error al abrir el fichero"<<endl;
@@ -104,23 +104,27 @@ bool Maquina::selectMachine(int machine_ID, date date, int time, int nucleus)
 
 list <string> Maquina::listMachine(date date, int time, int nucleus)
 {
-	ifstream f("machine.txt");
+	ifstream f("Maquinas.txt");
 	if(!f)
 	{
 		cout<<"Error al abrir el fichero"<<endl;
 		EXIT_FAILURE;
 	}
 
-
 	string line;
 	string nucl;
 	string nocup;
+	string m_id;
+
+	list <string> n;
 
 	int nucleus;
 	int nucleusOcup;
 
 	string delimiter=" ";
 	getline(f, line, '\n');
+	line.erase(0, line.find(delimiter) + delimiter.length());
+	m_id = line.substr(0, line.find(delimiter));
 	line.erase(0, line.find(delimiter) + delimiter.length());
 	nucl = line.substr(0, line.find(delimiter));
 	line.erase(0, line.find(delimiter) + delimiter.length());
@@ -131,17 +135,13 @@ list <string> Maquina::listMachine(date date, int time, int nucleus)
 
 	while(!f.eof())
 	{
-		list <string> n;
-
 		if(nucleus<=(nucleus - nucleusOcup))
 		{
-
-			f.close();
-			n.push_back;
-			return n;
+			n.push_back(m_id);
 		}
 	}
 	f.close();
+	return n;
 }
 
 bool Maquina::deleteReserva(int machine_ID, int reserva_ID)
