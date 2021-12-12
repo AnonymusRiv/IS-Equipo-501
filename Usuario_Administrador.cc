@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 Usuario_administrador_de_usuarios::Usuario_administrador_de_usuarios(int id, string password, string name, string mail){
 	UA_ID_=id;
 	UA_Password_=password;
