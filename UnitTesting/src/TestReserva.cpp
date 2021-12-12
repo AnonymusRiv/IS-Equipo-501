@@ -21,44 +21,50 @@ void testSetDate(){
 	ASSERT(resultado1==true);
 
 	date ayer;
-	ayer.day="16";
+	ayer.day="01";
 	ayer.month="12";
 	ayer.year="2021";
 	Reserva res1=Reserva(1, ayer, 1, 1, 1, 1);
 	bool resultado2=res1.setDate(ayer);
-	ASSERT(resultado2==true);
+	ASSERT(resultado2==false);
 }
 
 void testSetTime(){
 	date hoy;
+	int time=-2;
 	Reserva res1=Reserva(1,hoy,1,1,1);
-	bool resultado1=res1.setTime(-2);
+	bool resultado1=res1.setTime(time);
 	ASSERT(resultado1==false);
 
+	time=2;
 	Reserva res2=Reserva(1,hoy,1,1,1);
-	bool resultado2=res2.setTime(2);
+	bool resultado2=res2.setTime(time);
 	ASSERT(resultado2==true);
 }
 
 void testSetMachine(){
 	date hoy;
+	int machine=-2;
 	Reserva res1=Reserva(1,hoy,1,1,1);
-	bool resultado1=res1.setMachine(51);
+	bool resultado1=res1.setMachine(machine);
 	ASSERT(resultado1==false);
 
+	machine=2;
 	Reserva res2=Reserva(1,hoy,1,1,1);
-	bool resultado2=res2.setMachine(2);
+	bool resultado2=res2.setMachine(machine);
 	ASSERT(resultado2==true);
 }
 
 void testSetNucleus(){
 	date hoy;
+	int n=-2;
 	Reserva res1=Reserva(1,hoy,1,1,1);
-	bool resultado1=res1.setNucleus(15);
+	bool resultado1=res1.setNucleus(n);
 	ASSERT(resultado1==false);
 
+	n=3;
 	Reserva res2=Reserva(1,hoy,1,1,1);
-	bool resultado2=res2.setNucleus(3);
+	bool resultado2=res2.setNucleus(n);
 	ASSERT(resultado2==true);
 }
 
