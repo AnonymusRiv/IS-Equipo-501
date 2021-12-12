@@ -41,7 +41,7 @@ void testSetTime(){
 
 void testSetMachine(){
 	date hoy;
-	int machine=51;
+	int machine=-2;
 	Reserva res1=Reserva(1,hoy,1,1,1);
 	bool resultado1=res1.setMachine(machine);
 	ASSERT(resultado1==false);

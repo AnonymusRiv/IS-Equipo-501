@@ -20,10 +20,10 @@ Reserva::Reserva(int user_ID, date res_date, int res_Machine, int res_Nucleus, i
 
 bool Reserva::setDate(date date){
     auto t1=(date.day+"/"+date.month+"/"+date.year);
-    auto t = std::time(nullptr);
-    auto tm = *std::localtime(&t);
-    std::ostringstream oss;
-    oss << std::put_time(&tm, "%d%m%Y");
+    auto t = time(nullptr);
+    auto tm = *localtime(&t);
+    ostringstream oss;
+    oss << put_time(&tm, "%d/%m/%Y");
     auto str = oss.str();
 
     if(t1<str){
@@ -44,6 +44,9 @@ bool Reserva::setTime(int time){
 }
 
 bool Reserva::setMachine(int machine_ID){
+    if(machine_ID<0){
+        return false;
+    }
     ifstream file("maquinas.txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
@@ -203,8 +206,8 @@ string Reserva::modificarReserva(int user_ID, int reserva_ID){
     getline(file,reserva,' ');
     while(!file.eof()){
         if(reserva==to_string(reserva_ID)){
-            selection:
             system("clear");
+            selection:
             cout << "Seleccione la acción que desea realizar con la reserva:\n";
             cout << "1. ELIMINAR reserva\n";
             cout << "2. MODIFICAR reserva\n";
