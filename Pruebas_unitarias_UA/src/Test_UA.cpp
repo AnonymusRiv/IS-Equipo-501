@@ -8,7 +8,7 @@
 using namespace std;
 
 void thisIsATest() {
-	ASSERTM("start writing tests", false);	
+	ASSERTM("start writing tests", true);
 }
 
 void testSetPassword(){
@@ -54,7 +54,7 @@ void testSetMail(){
 	Usuario_administrador_de_maquinas usuario4(1, "123456", "name", mail);
 		resultado=usuario4.setMail(mail);
 		ASSERT(resultado==false);
-	mail="user.com";
+	mail="user@gmail";
 	Usuario_administrador_de_usuarios usuario5(1, "123456", "name", mail);
 		resultado=usuario5.setMail(mail);
 			ASSERT(resultado==false);
