@@ -13,9 +13,9 @@ Reserva::Reserva(int user_ID, date res_date, int res_Machine, int res_Nucleus, i
     R_Date_.day=res_date.day;
     R_Date_.month=res_date.month;
     R_Date_.year=res_date.year;
-    R_Machine=res_Machine;
-    R_Nucleus=res_Nucleus;
-    R_Time=res_Time;
+    R_Machine_=res_Machine;
+    R_Nucleus_=res_Nucleus;
+    R_Time_=res_Time;
 }
 
 bool Reserva::setDate(date date){
@@ -39,25 +39,27 @@ bool Reserva::setTime(int time){
         return false;
     }
     else{
+        R_Time_=time;
         return true;
     }
 }
 
 bool Reserva::setMachine(int machine_ID){
     if(machine_ID<0){
+        cout<<"ERROR ID invalido\n";
         return false;
     }
     ifstream file("maquinas.txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
-        EXIT_FAILURE;
+        return false;
     }
-
     string machineID=to_string(machine_ID);
     string id;
     getline(file,id,' ');
     while(!file.eof()){
         if(id==machineID){
+            R_Machine_=machine_ID;
             return true;
         }
         getline(file,id,' ');
@@ -72,6 +74,7 @@ bool Reserva::setNucleus(int nucleus){
         cout << "ERROR. El número de núcleos indicados ha de ser mayor a 1\n";
         return false;
     }
+    R_Nucleus_=nucleus;
     return true;
 }
 
@@ -81,7 +84,7 @@ bool Reserva::esUsuarioNormal(int user_ID){
         cout << "ERROR al abrir el fichero\n";
         EXIT_FAILURE;
     }
-    
+
     string userID=to_string(user_ID);
     string id;
     getline(file,id,' ');
@@ -254,14 +257,18 @@ bool Reserva::deleteReserva(int user_ID, int reserva_ID){
     fileAux.close();
 
     string filename=user+".txt";
-    
+
     if(remove(filename.c_str())!=0){
     	cout << "ERROR al eliminar el fichero\n";
     	return false;
-	} 
+	}
     else{
     	cout << "Fichero eliminado\n";
     }
     rename("fileAux.txt",(filename.c_str()));
     return true;
 }
+
+    bool Reserva::crearReserva(int user_ID, int reserva_ID, int res_Machine, int res_Nucleus, date fecha, int res_Time){
+
+    }

@@ -59,7 +59,7 @@ bool Maquina::findMachine(int machine_ID)
 	if(!f)
 	{
 		cout<<"Error al abrir el fichero"<<endl;
-		EXIT_FAILURE;
+		return false;
 	}
 
 	int election;
@@ -69,10 +69,12 @@ bool Maquina::findMachine(int machine_ID)
 		if(maquina == to_string(machine_ID))
 		{
 			f.close();
+			M_ID_=machine_ID;
 			return true;
 		}
 	}
 	f.close();
+    cout << "ERROR. No existe en el sistema el identificador de la máquina indicada"<<endl;
 	return false;
 }
 
@@ -82,23 +84,45 @@ bool Maquina::selectMachine(int machine_ID, date date, int time, int nucleus)
 	if(!f)
 	{
 		cout<<"Error al abrir el fichero"<<endl;
-		EXIT_FAILURE;
+		return false;
 	}
 
 	int election;
 	string maquina;
+
+	int nucleus;
+	int nucleusOcup;
+
+	string line;
+	string nucl;
+	string nocup;
+	string m_id;
+
+	string delimiter=" ";
+	getline(f, line, '\n');
+	line.erase(0, line.find(delimiter) + delimiter.length());
+	m_id = line.substr(0, line.find(delimiter));
+	line.erase(0, line.find(delimiter) + delimiter.length());
+	nucl = line.substr(0, line.find(delimiter));
+	line.erase(0, line.find(delimiter) + delimiter.length());
+	nocup = line.substr(0, line.find(delimiter));
+
+	nucleus=stoi(nucl);
+	nucleusOcup=stoi(nocup);
 	while(!f.eof())
 	{
 		if(maquina == to_string(machine_ID))
 		{
-			if(nucleus<=(M_Nucleus_ - M_NOcuped_))
+			if(nucleus<=(nucleus - nucleusOcup))
 			{
 				f.close();
+				//!añadir la escritura de este en el fichero, sustituir los nocupados por nocup+nucleus (no nucleos totales, sino los nucleos introducidos)
 				return true;
 			}
 		}
 	}
 	f.close();
+	cout << "ERROR. No existe en el sistema el identificador de la máquina indicada"<<endl;
 	return false;
 }
 

@@ -17,9 +17,9 @@ class Reserva{
         int R_ID_;
         int R_User_;
         date R_Date_;
-        int R_Machine;
-        int R_Nucleus;
-        int R_Time;
+        int R_Machine_;
+        int R_Nucleus_;
+        int R_Time_;
 
         bool esUsuarioNormal(int user_ID);
         bool esUsuarioAdmin(int user_ID);
@@ -34,6 +34,7 @@ class Reserva{
         list <string> listReservas(int user_ID);
         string modificarReserva(int user_ID, int reserva_ID);
         bool deleteReserva(int user_ID, int reserva_ID);
+        bool crearReserva(int user_ID, int reserva_ID, int res_Machine, int res_Nucleus, date fecha, int res_Time);
 };
 
 #endif

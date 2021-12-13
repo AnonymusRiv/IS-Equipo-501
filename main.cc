@@ -37,13 +37,14 @@ int main(){
     cout<<"\nIntroduzca su contraseña: ";
     cin>>Password;
     s.login(ID, Password);
+    cout<<"------INSTRUCCIONES QUE PUEDE REALIZAR EN EL SISTEMA------"<<endl;
+    cout<<"1. Crear reserva"<<endl;
+    cout<<"2. Modificar reserva"<<endl;
+    cout<<"3. Modificar usuario"<<endl;
+    cout<<"4. Modificar maquina"<<endl;
+    cout<<"5. Salir del sistema"<<endl;
+    cin>>opcion;
     while(opcion!=5){
-        cout<<"------INSTRUCCIONES QUE PUEDE REALIZAR EN EL SISTEMA------"<<endl;
-        cout<<"1. Crear reserva"<<endl;
-        cout<<"2. Modificar reserva"<<endl;
-        cout<<"3. Modificar usuario"<<endl;
-        cout<<"4. Modificar maquina"<<endl;
-        cout<<"5. Salir del sistema"<<endl;
         switch(opcion){
             case 1:
                 cout<<"Introduzca la fecha de comienzo de la reserva:"<<endl;
@@ -86,6 +87,7 @@ int main(){
                 cin>>nucleus;
                 if(r.setNucleus(nucleus)==false){
                     cout<<"Saliendo del sistema..."<<endl;
+                    EXIT_FAILURE;
                 }
                 cout<<"Nucleos asignados correctamente"<<endl;
 
@@ -104,6 +106,8 @@ int main(){
                     EXIT_FAILURE;
                     }
                 }
+
+                
                 cout<<"Reserva realizada correctamente."<<endl;
             break;
 
