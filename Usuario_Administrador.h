@@ -2,6 +2,8 @@
 #define USUARIO_ADMINISTRADOR_H
 
 #include <string>
+#include <fstream>
+#include <cstring>
 using namespace std;
 
 class Usuario_administrador{
@@ -10,8 +12,8 @@ class Usuario_administrador{
 		string UA_Password_;
 		string UA_Name_;
 		string UA_Mail_;
-
 		inline string getPassword(){return UA_Password_; };
+		bool deleteUser(int id);
 	public:
 		inline int getID(){return UA_ID_; };
 		inline string getName(){return UA_Name_; };
@@ -19,6 +21,7 @@ class Usuario_administrador{
 		bool setMail(string mail);
 		bool setPassword(string password);
 		bool setName(string name);
+		string modificarUsuario(int id);
 };
 class Usuario_administrador_de_usuarios : public Usuario_administrador{
 	private:

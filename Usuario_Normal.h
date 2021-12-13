@@ -18,8 +18,6 @@ class Usuario_Normal{
 		bool setNucleus(int nucleus);
 		bool setTime(int time);
 		inline string getPassword(){return UN_Password_; };
-		string modificarUsuario(int id);
-		bool deleteUser(int id);
 	public:
 		Usuario_Normal(int id, string name, string password, string mail, int nucleus=0, int time=0);
 		inline int getId(){return UN_ID_; };

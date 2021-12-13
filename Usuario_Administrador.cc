@@ -18,6 +18,23 @@ Usuario_administrador_de_maquinas::Usuario_administrador_de_maquinas(int id, str
 	UA_Type_=2;
 }
 
+bool Usuario_administrador::deleteUser(int id){
+	if(id<=0){
+		cout << "ERROR. ID no válido" << endl;
+		return false;
+	}
+
+	string usuario_normalID=to_string(id);
+	string fichero=usuario_normalID+".txt";
+	if(remove(fichero.c_str())!=0){
+    	cout << "ERROR al eliminar el fichero\n";
+    	return false;
+	} else{
+    	cout << "Fichero eliminado\n";
+    }
+	return true;
+}
+
 bool Usuario_administrador::setMail(string mail){
 	if(mail==""){
 		cout << "ERROR. Correo no válido" << endl;
@@ -52,4 +69,38 @@ bool Usuario_administrador::setName(string name){
 	}
 	UA_Name_=name;
 	return true;
+}
+
+string Usuario_administrador::modificarUsuario(int id){
+	string usuario_normalID=to_string(id);
+	ifstream file(usuario_normalID+".txt");
+    if(!file){
+        cout << "ERROR al abrir el fichero\n";
+        EXIT_FAILURE;
+    }
+    int select;
+    string usuario;
+    getline(file,usuario,' ');
+    while(!file.eof()){
+        if(usuario==usuario_normalID){
+            selection:
+            system("clear");
+            cout << "Seleccione la acción que desea realizar con el usuario:\n";
+            cout << "1. ELIMINAR usuario\n";
+            cout << "2. MODIFICAR usuario\n";
+            cin >> select;
+            if(select==1){
+            	deleteUser(id);
+                return "CANCELAR";
+            }
+            else if(select==2){
+                return "MODIFICAR";
+            }
+            else{
+                cout << "Seleccione una opción válida\n";
+                goto selection;
+            }
+        }
+    }
+    file.close();
 }
