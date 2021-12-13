@@ -107,7 +107,7 @@ int main(){
                     }
                 }
 
-                
+                if(r.crearReserva(ID, , , , ,))
                 cout<<"Reserva realizada correctamente."<<endl;
             break;
 

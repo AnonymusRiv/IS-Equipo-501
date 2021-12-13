@@ -269,6 +269,6 @@ bool Reserva::deleteReserva(int user_ID, int reserva_ID){
     return true;
 }
 
-    bool Reserva::crearReserva(int user_ID, int reserva_ID, int res_Machine, int res_Nucleus, date fecha, int res_Time){
+    bool Reserva::crearReserva(int user_ID, int res_Machine, int res_Nucleus, date fecha, int res_Time){
 
     }
