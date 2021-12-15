@@ -90,7 +90,7 @@ bool Maquina::selectMachine(int machine_ID, date date, int time, int nucleus)
 	int election;
 	string maquina;
 
-	int nucleus;
+	int nucle;
 	int nucleusOcup;
 
 	string line;
@@ -107,16 +107,36 @@ bool Maquina::selectMachine(int machine_ID, date date, int time, int nucleus)
 	line.erase(0, line.find(delimiter) + delimiter.length());
 	nocup = line.substr(0, line.find(delimiter));
 
-	nucleus=stoi(nucl);
+	nucle=stoi(nucl);
 	nucleusOcup=stoi(nocup);
 	while(!f.eof())
 	{
 		if(maquina == to_string(machine_ID))
 		{
-			if(nucleus<=(nucleus - nucleusOcup))
+			if(nucleus<=(nucle - nucleusOcup))
 			{
 				f.close();
-				//!añadir la escritura de este en el fichero, sustituir los nocupados por nocup+nucleus (no nucleos totales, sino los nucleos introducidos)
+				fstream f1(to_string(machine_ID)+".txt");
+				if(!f1)
+				{
+					cout<<"Error al abrir el fichero"<<endl;
+					return false;
+				}
+
+				int cont=1;
+				string info;
+				getline(f1, info, '\n');
+				while(!f1.eof())
+				{
+					cont++;
+					getline(f1, info, '\n');
+				}
+				M_ID_ = cont+1;
+				nucleus = nucle+nucleusOcup;
+
+				f1 << M_ID_ << " " << nucleus << " " << nucleusOcup << endl;
+
+				f1.close();
 				return true;
 			}
 		}
@@ -142,7 +162,7 @@ list <string> Maquina::listMachine(date date, int time, int nucleus)
 
 	list <string> n;
 
-	int nucleus;
+	int nucle;
 	int nucleusOcup;
 
 	string delimiter=" ";
@@ -154,12 +174,12 @@ list <string> Maquina::listMachine(date date, int time, int nucleus)
 	line.erase(0, line.find(delimiter) + delimiter.length());
 	nocup = line.substr(0, line.find(delimiter));
 
-	nucleus=stoi(nucl);
+	nucle=stoi(nucl);
 	nucleusOcup=stoi(nocup);
 
 	while(!f.eof())
 	{
-		if(nucleus<=(nucleus - nucleusOcup))
+		if(nucleus<=(nucle - nucleusOcup))
 		{
 			n.push_back(m_id);
 		}
@@ -248,6 +268,7 @@ string Maquina::modificarMachine(int machine_ID)
 		{
 			cout<<"Debe seleccionar o 1 o 2"<<endl;
 			goto sel;
+		}
 		}
 	}
 	f.close();
