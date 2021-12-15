@@ -33,7 +33,7 @@ bool Maquina::setID(int machine_ID)
 	if(!f)
 	{
 		cout<<"Error al abrir el fichero"<<endl;
-		EXIT_FAILURE;
+		exit(EXIT_FAILURE);
 	}
 
 	int election;
@@ -55,7 +55,7 @@ bool Maquina::setID(int machine_ID)
 
 bool Maquina::findMachine(int machine_ID)
 {
-	ifstream f(machine_ID+".txt");
+	ifstream f("Maquinas.txt");
 	if(!f)
 	{
 		cout<<"Error al abrir el fichero"<<endl;
@@ -152,7 +152,7 @@ list <string> Maquina::listMachine(date date, int time, int nucleus)
 	if(!f)
 	{
 		cout<<"Error al abrir el fichero"<<endl;
-		EXIT_FAILURE;
+		exit(EXIT_FAILURE);
 	}
 
 	string line;
@@ -194,14 +194,14 @@ bool Maquina::deleteReserva(int machine_ID, int reserva_ID)
 	if(!f)
 	{
 		cout<<"Error al abrir el fichero"<<endl;
-		EXIT_FAILURE;
+		exit(EXIT_FAILURE);
 	}
 
 	ofstream f1("f1.txt");
 	if(!f)
 	{
 		cout<<"Error al abrir el fichero"<<endl;
-		EXIT_FAILURE;
+		exit(EXIT_FAILURE);
 	}
 
 	string reserva;
@@ -230,6 +230,7 @@ bool Maquina::deleteReserva(int machine_ID, int reserva_ID)
 	}
 
 	rename("f1.txt", (fnew.c_str()));
+	return true;
 }
 
 string Maquina::modificarMachine(int machine_ID)
@@ -238,7 +239,7 @@ string Maquina::modificarMachine(int machine_ID)
 	if(!f)
 	{
 		cout<<"Error al abrir el fichero"<<endl;
-		EXIT_FAILURE;
+		exit(EXIT_FAILURE);
 	}
 
 	int election;
@@ -272,5 +273,5 @@ string Maquina::modificarMachine(int machine_ID)
 		}
 	}
 	f.close();
-	return "CREAR";
+    exit(EXIT_FAILURE);
 }

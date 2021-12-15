@@ -1,8 +1,2 @@
-//UA_ID UA_Password UA_Name UA_Mail UA_Type
-/*
-int UA_ID = numero, sin minimo ni maximo no repetible
-string UA_Password = cadena de como mínimo 4 caracteres
-string UA_Name = cadena sin minimo de caracteres ni maximo (solo poner nombre, sin apellidos)
-string UA_Mail = cadena sin minimo de caracteres + @ + tipo_correo +.com
-int UA_Type = numero de 1 caracter (UA_Type=2)
-*/
+123 XxxX Silvia hola@uco.es 5 40
+12345 No More adios@uco.es 1 10
