@@ -36,7 +36,7 @@ bool Maquina::setID(int machine_ID)
 		exit(EXIT_FAILURE);
 	}
 
-	int election;
+
 	string maquina=to_string(machine_ID);
 	string id;
 	getline(f, id, ' ');
@@ -55,15 +55,17 @@ bool Maquina::setID(int machine_ID)
 
 bool Maquina::findMachine(int machine_ID)
 {
-	ifstream f("Maquinas.txt");
+
+	ifstream f(to_string(machine_ID)+".txt");
+
 	if(!f)
 	{
 		cout<<"Error al abrir el fichero"<<endl;
 		return false;
 	}
 
-	int election;
 	string maquina;
+	getline(f,maquina,' ');
 	while(!f.eof())
 	{
 		if(maquina == to_string(machine_ID))
@@ -80,15 +82,15 @@ bool Maquina::findMachine(int machine_ID)
 
 bool Maquina::selectMachine(int machine_ID, date date, int time, int nucleus)
 {
-	ifstream f(machine_ID+".txt");
+	ifstream f(to_string(machine_ID)+".txt");
 	if(!f)
 	{
 		cout<<"Error al abrir el fichero"<<endl;
 		return false;
 	}
 
-	int election;
 	string maquina;
+
 
 	int nucle;
 	int nucleusOcup;
@@ -96,21 +98,16 @@ bool Maquina::selectMachine(int machine_ID, date date, int time, int nucleus)
 	string line;
 	string nucl;
 	string nocup;
-	string m_id;
 
-	string delimiter=" ";
-	getline(f, line, '\n');
-	line.erase(0, line.find(delimiter) + delimiter.length());
-	m_id = line.substr(0, line.find(delimiter));
-	line.erase(0, line.find(delimiter) + delimiter.length());
-	nucl = line.substr(0, line.find(delimiter));
-	line.erase(0, line.find(delimiter) + delimiter.length());
-	nocup = line.substr(0, line.find(delimiter));
+
+	getline(f, maquina, ' ');
+	getline(f, nucl, ' ');
+	getline(f, nocup, '\n');
+
 
 	nucle=stoi(nucl);
 	nucleusOcup=stoi(nocup);
-	while(!f.eof())
-	{
+
 		if(maquina == to_string(machine_ID))
 		{
 			if(nucleus<=(nucle - nucleusOcup))
@@ -140,7 +137,7 @@ bool Maquina::selectMachine(int machine_ID, date date, int time, int nucleus)
 				return true;
 			}
 		}
-	}
+
 	f.close();
 	cout << "ERROR. No existe en el sistema el identificador de la máquina indicada"<<endl;
 	return false;
