@@ -34,7 +34,7 @@ class Reserva{
         list <string> listReservas(int user_ID);
         string modificarReserva(int user_ID, int reserva_ID);
         bool deleteReserva(int user_ID, int reserva_ID);
-        bool crearReserva(int user_ID, int res_Machine, int res_Nucleus, date fecha, int res_Time);
+        bool crearReserva(int user_ID, date res_date, int res_Machine, int res_Nucleus, int res_Time);
 };
 
 #endif

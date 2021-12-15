@@ -82,6 +82,7 @@ string Usuario_Normal::modificarUsuario(int id){
         }
     }
     file.close();
+	exit(EXIT_FAILURE);
 }
 
 bool Usuario_Normal::deleteUser(int id){

@@ -49,7 +49,7 @@ bool Reserva::setMachine(int machine_ID){
         cout<<"ERROR ID invalido\n";
         return false;
     }
-    ifstream file("maquinas.txt");
+    ifstream file("Maquinas.txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
         return false;
@@ -82,7 +82,7 @@ bool Reserva::esUsuarioNormal(int user_ID){
     ifstream file("usuarios_normales.txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
-        EXIT_FAILURE;
+        exit(EXIT_FAILURE);
     }
 
     string userID=to_string(user_ID);
@@ -102,9 +102,8 @@ bool Reserva::esUsuarioAdmin(int user_ID){
     ifstream file("usuarios_administradores.txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
-        EXIT_FAILURE;
+        exit(EXIT_FAILURE);
     }
-    
     string userID=to_string(user_ID);
     string id;
     getline(file,id,' ');
@@ -123,7 +122,7 @@ list <string> Reserva::fileToList(int user_ID){
     ifstream file(user+".txt");
         if(!file){
             cout << "ERROR al abrir el fichero\n";
-            EXIT_FAILURE;
+            exit(EXIT_FAILURE);
         }
 
     list <string> reservas;
@@ -142,7 +141,7 @@ list <string> Reserva::unifyList(string user, list <string> aux){
     ifstream file(user+".txt");
     if(!file){
     cout << "ERROR al abrir el fichero\n";
-    EXIT_FAILURE;
+    exit(EXIT_FAILURE);
     }
 
     string datos;
@@ -161,7 +160,7 @@ list <string> Reserva::listReservas(int user_ID){
         ifstream file(user+".txt");
         if(!file){
             cout << "ERROR al abrir el fichero\n";
-            EXIT_FAILURE;
+            exit(EXIT_FAILURE);
         }
 
         return(fileToList(user_ID));
@@ -171,7 +170,7 @@ list <string> Reserva::listReservas(int user_ID){
         ifstream file("usuarios_administradores.txt");
         if(!file){
             cout << "ERROR al abrir el fichero\n";
-            EXIT_FAILURE;
+            exit(EXIT_FAILURE);
         }
 
         string user;
@@ -183,7 +182,7 @@ list <string> Reserva::listReservas(int user_ID){
             ifstream fileUser(user+".txt");
             if(!fileUser){
             cout << "ERROR al abrir el fichero\n";
-            EXIT_FAILURE;
+            exit(EXIT_FAILURE);
             }
             unifyList(user,aux);
             getline(file,user,'\n');
@@ -202,7 +201,7 @@ string Reserva::modificarReserva(int user_ID, int reserva_ID){
     ifstream file(user+".txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
-        EXIT_FAILURE;
+        exit(EXIT_FAILURE);
     }
     int select;
     string reserva;
@@ -216,7 +215,7 @@ string Reserva::modificarReserva(int user_ID, int reserva_ID){
             cout << "2. MODIFICAR reserva\n";
             cin >> select;
             if(select==1){
-                return "CANCELAR";
+                return "ELIMINAR";
             }
             else if(select==2){
                 return "MODIFICAR";
@@ -228,6 +227,7 @@ string Reserva::modificarReserva(int user_ID, int reserva_ID){
         }
     }
     file.close();
+    exit(EXIT_FAILURE);
 }
 
 bool Reserva::deleteReserva(int user_ID, int reserva_ID){
@@ -235,13 +235,13 @@ bool Reserva::deleteReserva(int user_ID, int reserva_ID){
     ifstream file(user+".txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
-        EXIT_FAILURE;
+        exit(EXIT_FAILURE);
     }
 
     ofstream fileAux("fileAux.txt");
     if(!fileAux){
         cout << "ERROR al abrir el fichero\n";
-        EXIT_FAILURE;
+        exit(EXIT_FAILURE);
     }
 
     string reservaID;
@@ -259,16 +259,36 @@ bool Reserva::deleteReserva(int user_ID, int reserva_ID){
     string filename=user+".txt";
 
     if(remove(filename.c_str())!=0){
-    	cout << "ERROR al eliminar el fichero\n";
-    	return false;
+        cout << "ERROR al eliminar el fichero\n";
+        return false;
 	}
     else{
-    	cout << "Fichero eliminado\n";
+        cout << "Fichero eliminado\n";
     }
     rename("fileAux.txt",(filename.c_str()));
     return true;
 }
 
-    bool Reserva::crearReserva(int user_ID, int res_Machine, int res_Nucleus, date fecha, int res_Time){
-
+bool Reserva::crearReserva(int user_ID, date res_date, int res_Machine, int res_Nucleus, int res_Time){
+    string user=to_string(user_ID);
+    fstream file((user+".txt"),fstream::app);
+    if(!file){
+        cout << "ERROR al abrir el fichero\n";
+        exit(EXIT_FAILURE);
     }
+
+    int contador=1;
+    string datos;
+    getline(file,datos,'\n');
+    while(!file.eof()){
+        contador++;
+        getline(file,datos,'\n');
+    }
+
+    int res_ID=contador+1;
+
+    file << res_ID << " " << user_ID << " " << res_date.day+"/"+res_date.month+"/"+res_date.year
+    << " " << res_Machine << " " << res_Nucleus << " " << res_Time << endl;
+
+    return true;
+}

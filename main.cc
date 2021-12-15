@@ -10,10 +10,11 @@
 using namespace std;
 
 int main(){
+    date dates;
     Sistema s;
-    Reserva r; //se q tengo q añadirle los parametros y por eso da error esta linea y la siguiente, cuando acabe lo demas lo añadire
-    Maquina m;
-    Usuario_Normal UN;
+    Reserva r = Reserva(1, dates, 1, 1, 1);
+    Maquina m = Maquina(1, 1);
+    //Usuario_Normal UN;
 
     date fecha;
     int time;
@@ -30,19 +31,19 @@ int main(){
     string respuesta;
     int opcion=0;
     system("clear");
-    cout<<"BIENVENIDO AL SISTEMA DE GESTION DE NUCLEOS"<<endl;
+    cout<<"\t\t\tBIENVENIDO AL SISTEMA DE GESTION DE NUCLEOS"<<endl;
     cout<<"Por favor introduzca su identificador para acceder al sistema: ";
     cin>>cadena;
     ID=stoi(cadena);
-    cout<<"\nIntroduzca su contraseña: ";
+    cout<<"Introduzca su contraseña: ";
     cin>>Password;
     s.login(ID, Password);
-    cout<<"------INSTRUCCIONES QUE PUEDE REALIZAR EN EL SISTEMA------"<<endl;
-    cout<<"1. Crear reserva"<<endl;
-    cout<<"2. Modificar reserva"<<endl;
-    cout<<"3. Modificar usuario"<<endl;
-    cout<<"4. Modificar maquina"<<endl;
-    cout<<"5. Salir del sistema"<<endl;
+    cout<<"\n----------------------INSTRUCCIONES QUE PUEDE REALIZAR EN EL SISTEMA--------------------------------"<<endl;
+    cout<<"\t\t\t\t1. Crear reserva"<<endl;
+    cout<<"\t\t\t\t2. Modificar reserva"<<endl;
+    cout<<"\t\t\t\t3. Modificar usuario"<<endl;
+    cout<<"\t\t\t\t4. Modificar maquina"<<endl;
+    cout<<"\t\t\t\t5. Salir del sistema"<<endl;
     cin>>opcion;
     while(opcion!=5){
         switch(opcion){
@@ -50,14 +51,14 @@ int main(){
                 cout<<"Introduzca la fecha de comienzo de la reserva:"<<endl;
                 cout<<"Dia: ";
                 cin>>fecha.day;
-                cout<<"\nMes: ";
+                cout<<"Mes: ";
                 cin>>fecha.month;
-                cout<<"\nAño: ";
+                cout<<"Año: ";
                 cin>>fecha.year;
                 cout<<endl;
                 if(r.setDate(fecha)==false){
                     cout<<"Saliendo del sistema..."<<endl;
-                    EXIT_FAILURE;
+                    exit(EXIT_FAILURE);
                 }
                 cout<<"Fecha asignada correctamente"<<endl;
 
@@ -66,7 +67,7 @@ int main(){
                 cout<<endl;
                 if(r.setTime(time)==false){
                     cout<<"Saliendo del sistema..."<<endl;
-                    EXIT_FAILURE;
+                    exit(EXIT_FAILURE);
                 }
                 cout<<"Tiempo asignado correctamente"<<endl;
 
@@ -74,12 +75,12 @@ int main(){
                 cin>>m_id;
                 if(r.setMachine(m_id)==false){
                     cout<<"Saliendo del sistema..."<<endl;
-                    EXIT_FAILURE;
+                    exit(EXIT_FAILURE);
                 }
 
                 if(m.findMachine(m_id)==false){
                     cout<<"Saliendo del sistema..."<<endl;
-                    EXIT_FAILURE;
+                    exit(EXIT_FAILURE);
                 }
                 cout<<"Maquina encontrada"<<endl;
 
@@ -87,7 +88,7 @@ int main(){
                 cin>>nucleus;
                 if(r.setNucleus(nucleus)==false){
                     cout<<"Saliendo del sistema..."<<endl;
-                    EXIT_FAILURE;
+                    exit(EXIT_FAILURE);
                 }
                 cout<<"Nucleos asignados correctamente"<<endl;
 
@@ -103,15 +104,16 @@ int main(){
                     cin>>m_id;
                     if(m.selectMachine(m_id, fecha, time, nucleus)==false){
                         cout<<"ERROR"<<endl;
-                    EXIT_FAILURE;
+                    exit(EXIT_FAILURE);
                     }
                 }
-
-                if(r.crearReserva(ID, , , , ,))
+                //if(r.crearReserva(ID, , , , ,))
+                //!guardar la reserva en el fichero
                 cout<<"Reserva realizada correctamente."<<endl;
             break;
 
             case 2:
+                {
                 reservas=r.listReservas(ID);
                 list <string>:: iterator it = reservas.begin();
                 while(it != reservas.end()){
@@ -129,11 +131,11 @@ int main(){
                 if(respuesta=="ELIMINAR"){
                     if(r.deleteReserva(user_id, r_id)==false){
                         cout<<"Saliendo del sistema..."<<endl;
-                        EXIT_FAILURE;
+                        exit(EXIT_FAILURE);
                     }
                     if(m.deleteReserva(m_id, r_id)==false){
                         cout<<"Saliendo del sistema..."<<endl;
-                        EXIT_FAILURE;
+                        exit(EXIT_FAILURE);
                     }
                     cout<<"Reserva eliminada correctamente"<<endl;
                 }
@@ -148,7 +150,7 @@ int main(){
                     cout<<endl;
                     if(r.setDate(fecha)==false){
                         cout<<"Saliendo del sistema..."<<endl;
-                        EXIT_FAILURE;
+                        exit(EXIT_FAILURE);
                     }
                     cout<<"Fecha asignada correctamente"<<endl;
 
@@ -157,7 +159,7 @@ int main(){
                     cout<<endl;
                     if(r.setTime(time)==false){
                         cout<<"Saliendo del sistema..."<<endl;
-                        EXIT_FAILURE;
+                        exit(EXIT_FAILURE);
                     }
                     cout<<"Tiempo asignado correctamente"<<endl;
 
@@ -165,12 +167,12 @@ int main(){
                     cin>>m_id;
                     if(r.setMachine(m_id)==false){
                         cout<<"Saliendo del sistema..."<<endl;
-                        EXIT_FAILURE;
+                        exit(EXIT_FAILURE);
                     }
 
                     if(m.findMachine(m_id)==false){
                         cout<<"Saliendo del sistema..."<<endl;
-                        EXIT_FAILURE;
+                        exit(EXIT_FAILURE);
                     }
                     cout<<"Maquina encontrada"<<endl;
 
@@ -193,19 +195,20 @@ int main(){
                         cin>>m_id;
                         if(m.selectMachine(m_id, fecha, time, nucleus)==false){
                             cout<<"ERROR"<<endl;
-                            EXIT_FAILURE;
+                            exit(EXIT_FAILURE);
                         }
                     }
                     //añadir una funcion para guardar la reserva en el fichero
                     cout<<"Reserva modificada correctamente."<<endl;
                 }
+            }
             break;
 
             case 3:
                 //poner si no es UA que dalga q no tiene permisos
                 cout<<"Introduzca el ID de la persona a modificar: ";
                 cin>>user_id;
-                respuesta=UN.modificarUsuario(user_id);
+                //respuesta=UN.modificarUsuario(user_id);
                 //cambiar las funciones a publicas de UA_maquinas y UA_usuarios
                 if(respuesta=="ELIMINAR"){
 
@@ -228,10 +231,8 @@ int main(){
                 }
 
             break;
-            case 5:
-                cout<<"Gracias por usar el sistema de gestion de nucleos"<<endl;
-                cout<<"¡Hasta pronto!"<<endl;
-            break;
         }
     }
+    cout<<"Gracias por usar el sistema de gestion de nucleos"<<endl;
+    cout<<"¡Hasta pronto!"<<endl;
 }
