@@ -269,6 +269,26 @@ bool Reserva::deleteReserva(int user_ID, int reserva_ID){
     return true;
 }
 
-    bool Reserva::crearReserva(int user_ID, int res_Machine, int res_Nucleus, date fecha, int res_Time){
-
+bool Reserva::crearReserva(int user_ID, date res_date, int res_Machine, int res_Nucleus, int res_Time){
+    string user=to_string(user_ID);
+    fstream file((user+".txt"),fstream::app);
+    if(!file){
+        cout << "ERROR al abrir el fichero\n";
+        return false;
     }
+
+    int contador=1;
+    string datos;
+    getline(file,datos,'\n');
+    while(!file.eof()){
+        contador++;
+        getline(file,datos,'\n');
+    }
+
+    int res_ID=contador+1;
+
+    file << res_ID << " " << user_ID << " " << res_date.day+"/"+res_date.month+"/"+res_date.year
+    << " " << res_Machine << " " << res_Nucleus << " " << res_Time << endl;
+
+    return true;
+}
