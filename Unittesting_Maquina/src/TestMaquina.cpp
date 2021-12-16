@@ -63,7 +63,7 @@ bool runAllTests(int argc, char const *argv[]) {
 	s.push_back(CUTE(testSetNucleus));
 	s.push_back(CUTE(testSetID));
 	s.push_back(CUTE(testFindMachine));
-	s.push_back(CUTE(testSelectMachine));
+	s.push_back(CUTE(testDeleteReserva));
 	s.push_back(CUTE(thisIsATest));
 	cute::xml_file_opener xmlfile(argc, argv);
 	cute::xml_listener<cute::ide_listener<>> lis(xmlfile.out);
