@@ -45,19 +45,14 @@ void testFindMachine()
 	ASSERT(resultado == true);
 }
 
-void testSelectMachine()
+void testDeleteReserva()
 {
-	date hoy;
-	hoy.day="16";
-	hoy.month="12";
-	hoy.year="2021";
-
 	Maquina m = Maquina(1,2,5);
-	bool resultado = m.selectMachine(2,hoy,5,2);
+	bool resultado = m.selectMachine(2,3);
 	ASSERT(resultado == false);
 
 	Maquina m1 = Maquina(1,1,4);
-	resultado = m1.selectMachine(1,hoy,3,1);
+	resultado = m1.selectMachine(1,1);
 	ASSERT(resultado == true);
 }
 
@@ -68,7 +63,7 @@ bool runAllTests(int argc, char const *argv[]) {
 	s.push_back(CUTE(testSetNucleus));
 	s.push_back(CUTE(testSetID));
 	s.push_back(CUTE(testFindMachine));
-	s.push_back(CUTE(testSelectMachine));
+	s.push_back(CUTE(testDeleteReserva));
 	s.push_back(CUTE(thisIsATest));
 	cute::xml_file_opener xmlfile(argc, argv);
 	cute::xml_listener<cute::ide_listener<>> lis(xmlfile.out);
