@@ -45,19 +45,14 @@ void testFindMachine()
 	ASSERT(resultado == true);
 }
 
-void testSelectMachine()
+void testDeleteReserva()
 {
-	date hoy;
-	hoy.day="16";
-	hoy.month="12";
-	hoy.year="2021";
-
 	Maquina m = Maquina(1,2,5);
-	bool resultado = m.selectMachine(2,hoy,5,2);
+	bool resultado = m.selectMachine(2,3);
 	ASSERT(resultado == false);
 
 	Maquina m1 = Maquina(1,1,4);
-	resultado = m1.selectMachine(1,hoy,3,1);
+	resultado = m1.selectMachine(1,1);
 	ASSERT(resultado == true);
 }
 
