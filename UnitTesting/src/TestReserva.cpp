@@ -67,13 +67,32 @@ void testSetNucleus(){
 
 void testDeleteReserva(){
 	date hoy;
-	Reserva res1=Reserva(2,hoy,1,1,1,2);
-	bool resultado1=res1.deleteReserva(-2,2);
-	ASSERT(resultado1==false);
+    Reserva res1=Reserva(1,hoy,1,1,1);
+	int user_ID=1234;
+	int user_res=3;
+	bool resultado1=res1.deleteReserva(user_ID,user_res);
+	ASSERT(resultado1==true);
 
-	Reserva res2=Reserva(2,hoy,1,1,1,2);
-	bool resultado2=res1.deleteReserva(2,2);
-	ASSERT(resultado2==true);
+	Reserva res2=Reserva(1,hoy,1,1,1);
+	int user2_ID=000;
+	bool resultado2=res2.deleteReserva(user2_ID,user_res);
+	ASSERT(resultado2==false);
+}
+
+void testCrearReserva(){
+	date hoy;
+    Reserva res1=Reserva(1,hoy,1,1,1);
+	int user_ID=1234;
+	int res_Machine=1;
+	int res_Nucleus=3;
+	int res_Time=5;
+	bool resultado1=res1.crearReserva(user_ID,hoy,res_Machine,res_Nucleus,res_Time);
+	ASSERT(resultado1==true);
+
+	Reserva res2=Reserva(1,hoy,1,1,1);
+	int user2_ID=000;
+	bool resultado2=res2.crearReserva(user2_ID,hoy,res_Machine,res_Nucleus,res_Time);
+	ASSERT(resultado2==false);
 }
 
 bool runAllTests(int argc, char const *argv[]) {

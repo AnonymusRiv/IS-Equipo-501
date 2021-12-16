@@ -246,13 +246,13 @@ bool Reserva::deleteReserva(int user_ID, int reserva_ID){
     ifstream file(user+".txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
-        exit(EXIT_FAILURE);
+        return false;
     }
 
     ofstream fileAux("fileAux.txt");
     if(!fileAux){
         cout << "ERROR al abrir el fichero\n";
-        exit(EXIT_FAILURE);
+        return false;
     }
 
     string reserva;
