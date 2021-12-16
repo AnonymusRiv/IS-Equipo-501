@@ -48,11 +48,11 @@ void testFindMachine()
 void testDeleteReserva()
 {
 	Maquina m = Maquina(1,2,5);
-	bool resultado = m.selectMachine(2,3);
+	bool resultado = m.deleteReserva(2,3);
 	ASSERT(resultado == false);
 
 	Maquina m1 = Maquina(1,1,4);
-	resultado = m1.selectMachine(1,1);
+	resultado = m1.deleteReserva(1,1);
 	ASSERT(resultado == true);
 }
 
