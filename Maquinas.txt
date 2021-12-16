@@ -1,6 +1,1 @@
-//M_ID M_Nucleus M_NOcupped
-/*
-int M_ID = numero sin minimo ni maximo no repetible
-int M_Nucleus = numero de 2 caracteres
-int M_NOcupped = numero de 2 caracteres
-*/
+1 20 0
