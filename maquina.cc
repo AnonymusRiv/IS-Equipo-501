@@ -39,7 +39,7 @@ bool Maquina::setID(int machine_ID)
 
 	string maquina=to_string(machine_ID);
 	string id;
-	getline(f, id, ' ');
+	getline(f, id, '\n');
 	while(!f.eof())
 	{
 		if(id == maquina)
@@ -47,7 +47,7 @@ bool Maquina::setID(int machine_ID)
 			f.close();
 			return true;
 		}
-		getline(f, id, ' ');
+		getline(f, id, '\n');
 	}
 	f.close();
 	return false;

@@ -67,6 +67,6 @@ void Sistema::login(int ID, string Password){
     }
     else{
         cout<<"Se ha accedido correctamente al sistema"<<endl;
-        cout<<"Bienvenido "<<nombre<<endl;
+        cout<<"Bienvenido "<<nombre<<nombre2<<endl;
     }
 }
