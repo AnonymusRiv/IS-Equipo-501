@@ -4,6 +4,7 @@
 #include <sstream>
 #include <fstream>
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -34,7 +35,7 @@ bool Reserva::setDate(date date){
 }
 
 bool Reserva::setTime(int time){
-    if(time<0){
+    if(time<1){
         cout << "ERROR. El número de días insertado ha de ser mayor a 1\n";
         return false;
     }
@@ -45,24 +46,26 @@ bool Reserva::setTime(int time){
 }
 
 bool Reserva::setMachine(int machine_ID){
-    if(machine_ID<0){
-        cout<<"ERROR ID invalido\n";
+    if(machine_ID<1){
+        cout<<"\nERROR ID invalido\n";
         return false;
     }
-    ifstream file("Maquinas.txt");
+
+    ifstream file("ID_Maquinas.txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
         return false;
     }
+
     string machineID=to_string(machine_ID);
     string id;
-    getline(file,id,' ');
+    getline(file,id,'\n');
     while(!file.eof()){
         if(id==machineID){
             R_Machine_=machine_ID;
             return true;
         }
-        getline(file,id,' ');
+        getline(file,id,'\n');
     }
     file.close();
     cout << "ERROR. No existe en el sistema el identificador de la máquina indicada\n";
@@ -70,7 +73,7 @@ bool Reserva::setMachine(int machine_ID){
 }
 
 bool Reserva::setNucleus(int nucleus){
-    if(nucleus<0){
+    if(nucleus<1){
         cout << "ERROR. El número de núcleos indicados ha de ser mayor a 1\n";
         return false;
     }
@@ -79,7 +82,7 @@ bool Reserva::setNucleus(int nucleus){
 }
 
 bool Reserva::esUsuarioNormal(int user_ID){
-    ifstream file("usuarios_normales.txt");
+    ifstream file("Usuarios_Normales.txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
         exit(EXIT_FAILURE);
@@ -87,31 +90,39 @@ bool Reserva::esUsuarioNormal(int user_ID){
 
     string userID=to_string(user_ID);
     string id;
-    getline(file,id,' ');
+    getline(file,id,'\n');
+    int uid=id.find(" ");
+    string uID=id.substr(0,uid);
     while(!file.eof()){
-        if(id==userID){
+        if(uID==userID){
             return true;
         }
-        getline(file,id,' ');
+        getline(file,id,'\n');
+        uid=id.find(" ");
+        uID=id.substr(0,uid);
     }
     file.close();
     return false;
 }
 
 bool Reserva::esUsuarioAdmin(int user_ID){
-    ifstream file("usuarios_administradores.txt");
+    ifstream file("Usuarios_Administradores.txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
         exit(EXIT_FAILURE);
     }
     string userID=to_string(user_ID);
     string id;
-    getline(file,id,' ');
+    getline(file,id,'\n');
+    int uid=id.find(" ");
+    string uID=id.substr(0,uid);
     while(!file.eof()){
-        if(id==userID){
+        if(uID==userID){
             return true;
         }
-        getline(file,id,' ');
+        getline(file,id,'\n');
+        uid=id.find(" ");
+        uID=id.substr(0,uid);
     }
     file.close();
     return false;
@@ -244,14 +255,19 @@ bool Reserva::deleteReserva(int user_ID, int reserva_ID){
         exit(EXIT_FAILURE);
     }
 
-    string reservaID;
     string reserva;
-    getline(file,reservaID,' ');
+
+    string rID=to_string(reserva_ID);
+    getline(file,reserva,'\n');
+    int pos=reserva.find(" ");
+    string reservaID=reserva.substr(0,pos);
     while(!file.eof()){
-        if(reservaID!=to_string(reserva_ID)){
-            getline(file,reserva,'\n');
-            fileAux << reserva;
+        if(reservaID!=rID){
+            fileAux << reserva << endl;
         }
+        getline(file,reserva,'\n');
+        pos=reserva.find(" ");
+        reservaID=reserva.substr(0,pos);
     }
     file.close();
     fileAux.close();
@@ -271,13 +287,13 @@ bool Reserva::deleteReserva(int user_ID, int reserva_ID){
 
 bool Reserva::crearReserva(int user_ID, date res_date, int res_Machine, int res_Nucleus, int res_Time){
     string user=to_string(user_ID);
-    fstream file((user+".txt"),fstream::app);
+    ifstream file(user+".txt");
     if(!file){
         cout << "ERROR al abrir el fichero\n";
-        exit(EXIT_FAILURE);
+        return false;
     }
 
-    int contador=1;
+    int contador=0;
     string datos;
     getline(file,datos,'\n');
     while(!file.eof()){
@@ -287,8 +303,24 @@ bool Reserva::crearReserva(int user_ID, date res_date, int res_Machine, int res_
 
     int res_ID=contador+1;
 
-    file << res_ID << " " << user_ID << " " << res_date.day+"/"+res_date.month+"/"+res_date.year
-    << " " << res_Machine << " " << res_Nucleus << " " << res_Time << endl;
+    file.close();
+
+    fstream file1((user+".txt"),fstream::app);
+	if(!file1){
+		cout<<"Error al abrir el fichero"<<endl;
+		return false;
+	}
+    file1 << res_ID << " " << res_date.day+"/"+res_date.month+"/"+res_date.year<< " " << res_Machine << " " << res_Nucleus << " " << res_Time << endl;
+    file1.close();
+
+    string maquina=to_string(res_Machine);
+	fstream file2((maquina+".txt"),fstream::app);
+	if(!file2){
+		cout<<"Error al abrir el fichero"<<endl;
+		return false;
+	}
+	file2 << res_ID << " " << res_date.day+"/"+res_date.month+"/"+res_date.year << " " << res_Time << " " << res_Nucleus << endl;
+	file2.close();
 
     return true;
 }

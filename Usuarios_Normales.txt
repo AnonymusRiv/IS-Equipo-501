@@ -1,2 +1,6 @@
-1234 Hola Carlos p02ritac@uco.es 3 20
-12 Adios Alba correo@uco.es 5 30
+12 Adios Alba i02pajia@uco.es 5 10
+1234
+Hola
+Carlos
+12
+Adios

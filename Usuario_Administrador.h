@@ -12,6 +12,7 @@ class Usuario_administrador{
 		string UA_Mail_;
 
 		inline string getPassword(){return UA_Password_; };
+
 	public:
 		inline int getID(){return UA_ID_; };
 		inline string getName(){return UA_Name_; };
@@ -19,6 +20,10 @@ class Usuario_administrador{
 		bool setMail(string mail);
 		bool setPassword(string password);
 		bool setName(string name);
+		string modificarUsuario(int id);
+		bool deleteUser(int id);
+		bool crearUser(int user_ID, string user_password, string user_name, string user_Mail, int user_Nucleus, int user_Time);
+		
 };
 class Usuario_administrador_de_usuarios : public Usuario_administrador{
 	private:
