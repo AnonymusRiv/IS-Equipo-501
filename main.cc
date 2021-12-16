@@ -99,7 +99,6 @@ int main(){
                 }
 
                 if(m.selectMachine(m_id, fecha, time, nucleus)==false){
-                    //mucha fumada de que esto vaya a ir
                     cout<<"Máquina no disponible, no tiene los núcleos solicitados."<<endl;
                     maquinas=m.listMachine(fecha, time, nucleus);
                     cout<<"Introduzca el id de la maquina que apareceran a continuacion para reservar esos nucleos"<<endl;
@@ -194,7 +193,6 @@ int main(){
                 }
 
                 if(m.selectMachine(m_id, fecha, time, nucleus)==false){
-                    //mucha fumada de que esto vaya a ir
                     cout<<"Máquina no disponible, no tiene los núcleos solicitados."<<endl;
                     maquinas=m.listMachine(fecha, time, nucleus);
                     cout<<"Introduzca el id de la maquina que apareceran a continuacion para reservar esos nucleos"<<endl;
@@ -220,9 +218,6 @@ int main(){
             break;
 
             case 3:
-                //poner si no es UA que dalga q no tiene permisos
-                //TODO crear objeto auxiliar de usuario normal y de usuario admin
-                //TODO todo :(
                 Usuario_administrador_de_usuarios user();
                 cout<<"Introduzca el ID de la persona a modificar: ";
                 cin>>user_id;
@@ -236,7 +231,6 @@ int main(){
                     cout << "Usuario eliminado correctamente" << endl;
                 }
                 else{
-                    //modificar la info. Hay que hacer un crearUser()
                     cout << "Introduzca el ID del usuario: ";
                     cin>>user_id;
                     cout<<"Introduzca la contraseña por defecto del usuario: ";
@@ -252,8 +246,6 @@ int main(){
                     //
                     UAU.deleteUser(user_id);
                     UAU.crearUser(user_id,Password,nombre, mail, nucleus, time);
-//bool Usuario_administrador::crearUser(int user_ID, string user_password, string user_name, string user_Mail, int user_Nucleus, int user_Time){
-                    
                 }
 
             break;
@@ -261,13 +253,13 @@ int main(){
             case 4:
                 cout<<"Introduzca el ID de la maquina que quiere modificar o el ID de una maquina nueva: ";
                 cin>>m_id;
-                //respuesta=m.modificarMachine(m_id);    //añadir dentro de modificarMachine la opción de cancelar
-                /*if(respuesta=="Eliminar"){
+                respuesta=m.modificarMachine(m_id);    //añadir dentro de modificarMachine la opción de cancelar
+                if(respuesta=="Eliminar"){
 
                 }
                 else{
 
-                }*/
+                }
 
             break;
         }
