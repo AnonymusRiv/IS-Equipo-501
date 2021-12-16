@@ -1,5 +1,7 @@
 #include "Usuario_Normal.h"
 #include <iostream>
+#include <fstream>
+#include <cstring>
 #include <string>
 
 using namespace std;
@@ -46,6 +48,57 @@ bool Usuario_Normal::setTime(int time){
 		return false;
 	}
 	UN_Time_=time;
+	return true;
+}
+
+string Usuario_Normal::modificarUsuario(int id){
+	string usuario_normalID=to_string(id);
+	ifstream file(usuario_normalID+".txt");
+    if(!file){
+        cout << "ERROR al abrir el fichero\n";
+        exit(EXIT_FAILURE);
+    }
+    int select;
+    string usuario;
+    getline(file,usuario,' ');
+    while(!file.eof()){
+        if(usuario==usuario_normalID){
+            selection:
+            system("clear");
+            cout << "Seleccione la acción que desea realizar con el usuario:\n";
+            cout << "1. ELIMINAR usuario\n";
+            cout << "2. MODIFICAR usuario\n";
+            cin >> select;
+            if(select==1){
+                return "ELIMINAR";
+            }
+            else if(select==2){
+                return "MODIFICAR";
+            }
+            else{
+                cout << "Seleccione una opción válida\n";
+                goto selection;
+            }
+        }
+    }
+    file.close();
+	exit(EXIT_FAILURE);
+}
+
+bool Usuario_Normal::deleteUser(int id){
+	if(id<=0){
+		cout << "ERROR. ID no válido" << endl;
+		return false;
+	}
+
+	string usuario_normalID=to_string(id);
+	string fichero=usuario_normalID+".txt";
+	if(remove(fichero.c_str())!=0){
+    	cout << "ERROR al eliminar el fichero\n";
+    	return false;
+	} else{
+    	cout << "Fichero eliminado\n";
+    }
 	return true;
 }
 

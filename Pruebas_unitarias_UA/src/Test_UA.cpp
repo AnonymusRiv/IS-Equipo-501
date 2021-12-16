@@ -3,12 +3,79 @@
 #include "xml_listener.h"
 #include "cute_runner.h"
 #include "Usuario_Administrador.h"
+#include "Usuario_Normal.h"
 #include <string>
 
 using namespace std;
 
 void thisIsATest() {
 	ASSERTM("start writing tests", true);
+}
+
+void testCrearUser(){
+	int id;
+	bool resultado;
+	id=8;
+	Usuario_Normal usuarionormal1(id, "name", "123456", "user@gmail.com", 0, 0);
+	Usuario_administrador_de_usuarios usuario1(1, "123456", "name", "user@gmail.com");
+	resultado=usuario1.crearUser(id, "name", "123456", "user@gmail.com", 0, 0);
+		ASSERT(resultado==true);
+	id=-1;
+	Usuario_Normal usuarionormal2(id, "name", "123456", "user@gmail.com", 0, 0);
+	Usuario_administrador_de_usuarios usuario2(2, "123456", "name", "user@gmail.com");
+	resultado=usuario2.crearUser(id, "name", "123456", "user@gmail.com", 0, 0);
+		ASSERT(resultado==false);
+	id=0;
+	Usuario_Normal usuarionormal3(id, "name", "123456", "user@gmail.com", 0, 0);
+	Usuario_administrador_de_usuarios usuario3(3, "123456", "name", "user@gmail.com");
+	resultado=usuario3.crearUser(id, "name", "123456", "user@gmail.com", 0, 0);
+		ASSERT(resultado==false);
+}
+
+void testModificarUsuario(){
+	int id;
+	string resultado;
+	id=8;
+	Usuario_Normal usuarionormal1(id, "name", "123456", "user@gmail.com", 0, 0);
+	Usuario_administrador_de_usuarios usuario1(1, "123456", "name", "user@gmail.com");
+	usuario1.crearUser(id, "name", "123456", "user@gmail.com", 0, 0);
+		resultado=usuario1.modificarUsuario(id);
+		ASSERT_EQUAL("MODIFICAR", resultado);
+	id=-1;
+	Usuario_Normal usuarionormal2(id, "name", "123456", "user@gmail.com", 0, 0);
+	Usuario_administrador_de_usuarios usuario2(2, "123456", "name", "user@gmail.com");
+	usuario2.crearUser(id, "name", "123456", "user@gmail.com", 0, 0);
+		resultado=usuario2.modificarUsuario(id);
+		ASSERT_EQUAL("", resultado);
+	id=0;
+	Usuario_Normal usuarionormal3(id, "name", "123456", "user@gmail.com", 0, 0);
+	Usuario_administrador_de_usuarios usuario3(3, "123456", "name", "user@gmail.com");
+	usuario3.crearUser(id, "name", "123456", "user@gmail.com", 0, 0);
+		resultado=usuario3.modificarUsuario(id);
+		ASSERT_EQUAL("", resultado);
+}
+
+void testDeleteUser(){
+	int id;
+	bool resultado;
+	id=8;
+	Usuario_Normal usuarionormal1(id, "name", "123456", "user@gmail.com", 0, 0);
+	Usuario_administrador_de_usuarios usuario1(1, "123456", "name", "user@gmail.com");
+	usuario1.crearUser(id, "name", "123456", "user@gmail.com", 0, 0);
+		resultado=usuario1.deleteUser(id);
+		ASSERT(resultado==true);
+	id=-1;
+	Usuario_Normal usuarionormal2(id, "name", "123456", "user@gmail.com", 0, 0);
+	Usuario_administrador_de_usuarios usuario2(2, "123456", "name", "user@gmail.com");
+	usuario2.crearUser(id, "name", "123456", "user@gmail.com", 0, 0);
+		resultado=usuario2.deleteUser(id);
+		ASSERT(resultado==false);
+	id=0;
+	Usuario_Normal usuarionormal3(id, "name", "123456", "user@gmail.com", 0, 0);
+	Usuario_administrador_de_usuarios usuario3(3, "123456", "name", "user@gmail.com");
+	usuario3.crearUser(id, "name", "123456", "user@gmail.com", 0, 0);
+		resultado=usuario3.deleteUser(id);
+		ASSERT(resultado==false);
 }
 
 void testSetPassword(){
@@ -74,6 +141,9 @@ bool runAllTests(int argc, char const *argv[]) {
 	cute::suite s { };
 	//TODO add your test here
 	s.push_back(CUTE(thisIsATest));
+	s.push_back(CUTE(testCrearUser));
+	s.push_back(CUTE(testModificarUsuario));
+	s.push_back(CUTE(testDeleteUser));
 	s.push_back(CUTE(testSetPassword));
 	s.push_back(CUTE(testSetMail));
 	cute::xml_file_opener xmlfile(argc, argv);

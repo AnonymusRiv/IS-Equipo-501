@@ -11,23 +11,6 @@ void thisIsATest() {
 	ASSERTM("start writing tests", true);
 }
 
-/*void testSetID(){
-	int id;
-	bool resultado;
-	id=1;
-	Usuario_Normal usuario1(id, "name", "123456", "user@gmail.com");
-		resultado=usuario1.setID(id);
-		ASSERT(resultado==true);
-	id=0;
-	Usuario_Normal usuario2(id, "name", "123456", "user@gmail.com");
-		resultado=usuario2.setID(id);
-		ASSERT(resultado==false);
-	id=-1;
-	Usuario_Normal usuario3(id, "name", "123456", "user@gmail.com");
-		resultado=usuario3.setID(id);
-		ASSERT(resultado==false);
-}*/
-
 void testSetPassword(){
 	string password;
 	bool resultado;
