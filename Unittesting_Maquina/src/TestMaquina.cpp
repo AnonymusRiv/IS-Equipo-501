@@ -7,7 +7,7 @@
 
 
 void thisIsATest() {
-	ASSERTM("start writing tests", false);	
+	ASSERTM("start writing tests", false);
 }
 
 void testSetNucleus()
@@ -30,7 +30,7 @@ void testSetID()
 	ASSERT(resultado == false);
 
 	Maquina m1 = Maquina(1,4,2);
-	 resultado = m1.setID(1);
+	resultado = m1.setID(1);
 	ASSERT(resultado == true);
 }
 

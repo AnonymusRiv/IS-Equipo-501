@@ -222,7 +222,6 @@ int main(){
                 cout<<"Introduzca el ID de la persona a modificar: ";
                 cin>>user_id;
                 respuesta=UAU.modificarUsuario(user_id);
-                //cambiar las funciones a publicas de UA_maquinas y UA_usuarios
                 if(respuesta=="ELIMINAR"){
                     if(UAU.deleteUser(user_id)==false){
                         cout<<"Saliendo del sistema..."<<endl;
@@ -243,7 +242,6 @@ int main(){
                     cin>>nucleus;
                     cout<<"Introduzca el número de días de los que dispondrá dicho usuario";
                     cin>>time;
-                    //
                     UAU.deleteUser(user_id);
                     UAU.crearUser(user_id,Password,nombre, mail, nucleus, time);
                 }
@@ -251,14 +249,23 @@ int main(){
             break;
 
             case 4:
-                cout<<"Introduzca el ID de la maquina que quiere modificar o el ID de una maquina nueva: ";
+                cout<<"Introduzca el ID de la máquina que quiere modificar o el ID de una máquina nueva: ";
                 cin>>m_id;
-                respuesta=m.modificarMachine(m_id);    //añadir dentro de modificarMachine la opción de cancelar
+                respuesta=m.modificarMachine(m_id);
                 if(respuesta=="Eliminar"){
-
+                    /*if(m.deleteMachine(m_id)==false){
+                            cout<<"Saliendo del sistema..."<<endl;
+                            exit(EXIT_FAILURE);
+                        }
+                    cout << "Maquina eliminada correctamente" << endl;*/
                 }
                 else{
-
+                    cout << "Introduzca el ID de la maquina: ";
+                    cin>>m_id;
+                    cout<<"Introduzca el número de núcleos que tiene dicha máquina ";
+                    cin >>nucleus;
+                    //m.deleteMachine(m_id);
+                    //m.crearMaquina(m_id, nucleus);
                 }
 
             break;
